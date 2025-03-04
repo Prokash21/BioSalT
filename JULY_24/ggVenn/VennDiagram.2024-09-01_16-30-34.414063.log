@@ -1,0 +1,13 @@
+INFO [2024-09-01 16:30:34] $x
+INFO [2024-09-01 16:30:34] gene_lists
+INFO [2024-09-01 16:30:34] 
+INFO [2024-09-01 16:30:34] $category.names
+INFO [2024-09-01 16:30:34] c("Zhongza_9", "QZ_006", "TOM_EX", "Micro_TOM", "X29_X_Boludo")
+INFO [2024-09-01 16:30:34] 
+INFO [2024-09-01 16:30:34] $filename
+INFO [2024-09-01 16:30:34] NULL
+INFO [2024-09-01 16:30:34] 
+INFO [2024-09-01 16:30:34] $output
+INFO [2024-09-01 16:30:34] [1] TRUE
+INFO [2024-09-01 16:30:34] 
+ERROR [2024-09-01 16:30:34] Incorrect number of elements.

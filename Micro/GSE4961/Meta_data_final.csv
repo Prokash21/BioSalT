@@ -1,0 +1,13 @@
+﻿Sample Name,Treatment,Time,Method
+GSM111919,ZS-5,2hr ,repeat1
+GSM111920,ZS-5,2hr,repeat2
+GSM111921,ZS-5,6hr,repeat1
+GSM111922,ZS-5,6hr,repeat2
+GSM111923,ZS-5,30min,repeat1
+GSM111924,ZS-5,30min,repeat2
+GSM111925,LA2711,30min,repeat1
+GSM111926,LA2711,2hr,repeat1
+GSM111927,LA2711,6hr,repeat1
+GSM111928,LA2711,30min,repeat2
+GSM111929,LA2711,2hr,repeat3
+GSM111930,LA2711,6hr,repeat4

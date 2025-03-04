@@ -1,0 +1,2 @@
+GSM1921941	tomato-WT_transgenic SlWRK3-MS medium-4 weeks replicat 1
+GSM1921942	tomato-transgenic SlWRKY3_WT-MS medium-4 weeks replicat 2

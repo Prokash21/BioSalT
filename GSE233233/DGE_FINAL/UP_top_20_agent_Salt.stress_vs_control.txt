@@ -1,0 +1,21 @@
+ENTREZ_GENE_ID	Name	Species
+101261835	protein phosphatase 2C ABI2(ABI2)	Solanum lycopersicum
+100316894	protein phosphatase 2C ABI2 homolog(PP2C-1)	Solanum lycopersicum
+101268268	protein NBR1 homolog(LOC101268268)	Solanum lycopersicum
+101250767	uncharacterized LOC101250767(LOC101250767)	Solanum lycopersicum
+101263630	homeobox-leucine zipper protein ATHB-7-like(LOC101263630)	Solanum lycopersicum
+101249794	protein phosphatase 2C 51-like(LOC101249794)	Solanum lycopersicum
+101251527	calmodulin-binding protein 25(LOC101251527)	Solanum lycopersicum
+101245191	uncharacterized LOC101245191(LOC101245191)	Solanum lycopersicum
+101250584	late embryogenesis abundant protein D-29(LOC101250584)	Solanum lycopersicum
+101257817	protein PIN-LIKES 6(LOC101257817)	Solanum lycopersicum
+101261529	serine/arginine-rich splicing factor SR45a(LOC101261529)	Solanum lycopersicum
+101249497	RING finger protein(LOC101249497)	Solanum lycopersicum
+101255324	uncharacterized LOC101255324(LOC101255324)	Solanum lycopersicum
+101245840	probable nucleoredoxin 2(LOC101245840)	Solanum lycopersicum
+101253585	dehydrin(dhn)	Solanum lycopersicum
+101257269	alpha-galactosidase 3(LOC101257269)	Solanum lycopersicum
+101259925	probable LRR receptor-like serine/threonine-protein kinase At2g16250(LOC101259925)	Solanum lycopersicum
+101250420	uncharacterized LOC101250420(LOC101250420)	Solanum lycopersicum
+101257012	serine/arginine-rich splicing factor SR30(LOC101257012)	Solanum lycopersicum
+101255191	DNA (cytosine-5)-methyltransferase(DRM7)	Solanum lycopersicum

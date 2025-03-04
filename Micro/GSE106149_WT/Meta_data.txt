@@ -1,0 +1,24 @@
+GSM2830490	res tomato mutant, roots, control condition, rep. 1
+GSM2830491	res tomato mutant, roots, control condition, rep. 2
+GSM2830492	res tomato mutant, roots, control condition, rep. 3
+GSM2830493	res tomato mutant, roots, salt stress condition, rep. 1
+GSM2830494	res tomato mutant, roots, salt stress condition, rep. 2
+GSM2830495	res tomato mutant, roots, salt stress condition, rep. 3
+GSM2830496	Tomato (S. lycopersicum) cv. Moneymaker, roots, control condition, rep. 1
+GSM2830497	Tomato (S. lycopersicum) cv. Moneymaker, roots, control condition, rep. 2
+GSM2830498	Tomato (S. lycopersicum) cv. Moneymaker, roots, control condition, rep. 3
+GSM2830499	Tomato (S. lycopersicum) cv. Moneymaker, roots, salt stress condition, rep. 1
+GSM2830500	Tomato (S. lycopersicum) cv. Moneymaker, roots, salt stress condition, rep. 2
+GSM2830501	Tomato (S. lycopersicum) cv. Moneymaker, roots, salt stress condition, rep. 3
+GSM2830502	res tomato mutant, leaflets, control condition, rep. 1
+GSM2830503	res tomato mutant, leaflets, control condition, rep. 2
+GSM2830504	res tomato mutant, leaflets, control condition, rep. 3
+GSM2830505	res tomato mutant, leaflets, salt stress condition, rep. 1
+GSM2830506	res tomato mutant, leaflets, salt stress condition, rep. 2
+GSM2830507	res tomato mutant, leaflets, salt stress condition, rep. 3
+GSM2830508	Tomato (S. lycopersicum) cv. Moneymaker, leaflets, control condition, rep. 1
+GSM2830509	Tomato (S. lycopersicum) cv. Moneymaker, leaflets, control condition, rep. 2
+GSM2830510	Tomato (S. lycopersicum) cv. Moneymaker, leaflets, control condition, rep. 3
+GSM2830511	Tomato (S. lycopersicum) cv. Moneymaker, leaflets, salt stress condition, rep. 1
+GSM2830512	Tomato (S. lycopersicum) cv. Moneymaker, leaflets, salt stress condition, rep. 2
+GSM2830513	Tomato (S. lycopersicum) cv. Moneymaker, leaflets, salt stress condition, rep. 3

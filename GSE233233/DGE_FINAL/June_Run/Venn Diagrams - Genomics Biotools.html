@@ -1,0 +1,5319 @@
+<!DOCTYPE html>
+<!-- saved from url=(0034)https://www.biotools.fr/misc/venny -->
+<html lang="en" data-lt-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style data-emotion="css" data-s=""></style>
+	<title>Venn Diagrams - Genomics Biotools</title>
+
+	<meta name="description" content="Genomics and Transcriptomics Bioinformatic tools.">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<!-- basic styles -->
+	<link href="./Venn Diagrams - Genomics Biotools_files/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="./Venn Diagrams - Genomics Biotools_files/font-awesome.min.css">
+
+	<!--[if IE 7]>
+	  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+	<![endif]-->
+
+	<!-- page specific plugin styles -->
+
+	<link rel="stylesheet" href="./Venn Diagrams - Genomics Biotools_files/jquery-ui-1.10.3.full.min.css">
+	<!-- fonts -->
+
+	<link rel="stylesheet" href="./Venn Diagrams - Genomics Biotools_files/ace-fonts.css">
+
+	<!-- ace styles -->
+
+	<link rel="stylesheet" href="./Venn Diagrams - Genomics Biotools_files/ace.min.css">
+	<link rel="stylesheet" href="./Venn Diagrams - Genomics Biotools_files/ace-rtl.min.css">
+	<link rel="stylesheet" href="./Venn Diagrams - Genomics Biotools_files/ace-skins.min.css">
+
+
+	<!--[if lte IE 8]>
+	  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+	<![endif]-->
+
+	<!-- inline styles related to this page -->
+
+	<!-- ace settings handler -->
+
+	<script type="text/javascript" async="" src="./Venn Diagrams - Genomics Biotools_files/js"></script><script async="" src="./Venn Diagrams - Genomics Biotools_files/analytics.js.download"></script><script src="./Venn Diagrams - Genomics Biotools_files/ace-extra.min.js.download"></script>
+
+<style type="text/css">.lf-progress {
+  -webkit-appearance: none;
+  -moz-apperance: none;
+  width: 100%;
+  /* margin: 0 10px; */
+  height: 4px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.lf-progress:focus {
+  outline: none;
+  border: none;
+}
+.lf-progress::-moz-range-track {
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+.lf-progress::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  height: 13px;
+  width: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress::-moz-range-thumb {
+  -moz-appearance: none !important;
+  height: 13px;
+  width: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress::-ms-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+.lf-progress::-ms-fill-lower {
+  background: #ccc;
+  border-radius: 3px;
+}
+.lf-progress::-ms-fill-upper {
+  background: #ccc;
+  border-radius: 3px;
+}
+.lf-progress::-ms-thumb {
+  border: 0;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: #0fccce;
+  cursor: pointer;
+}
+.lf-progress:focus::-ms-fill-lower {
+  background: #ccc;
+}
+.lf-progress:focus::-ms-fill-upper {
+  background: #ccc;
+}
+.lf-player-container :focus {
+  outline: 0;
+}
+.lf-popover {
+  position: relative;
+}
+
+.lf-popover-content {
+  display: inline-block;
+  position: absolute;
+  opacity: 1;
+  visibility: visible;
+  transform: translate(0, -10px);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+}
+
+.lf-popover-content.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 0px);
+}
+
+.lf-player-btn-container {
+  display: flex;
+  align-items: center;
+}
+.lf-player-btn {
+  cursor: pointer;
+  fill: #999;
+  width: 14px;
+}
+
+.lf-player-btn.active {
+  fill: #555;
+}
+
+.lf-popover {
+  position: relative;
+}
+
+.lf-popover-content {
+  display: inline-block;
+  position: absolute;
+  background-color: #ffffff;
+  opacity: 1;
+
+  transform: translate(0, -10px);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  transition: all 0.3s cubic-bezier(0.75, -0.02, 0.2, 0.97);
+  padding: 10px;
+}
+
+.lf-popover-content.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(0, 0px);
+}
+
+.lf-arrow {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  bottom: -9px;
+  border-style: solid;
+  border-width: 10px 10px 0px 10px;
+}
+
+.lf-left-align,
+.lf-left-align .lfarrow {
+  left: 0;
+  right: unset;
+}
+
+.lf-right-align,
+.lf-right-align .lf-arrow {
+  right: 0;
+  left: unset;
+}
+
+.lf-text-input {
+  border: 1px #ccc solid;
+  border-radius: 5px;
+  padding: 3px;
+  width: 60px;
+  margin: 0;
+}
+
+.lf-color-picker {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 90px;
+}
+
+.lf-color-selectors {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.lf-color-component {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.lf-color-component strong {
+  width: 40px;
+}
+
+.lf-color-component input[type='range'] {
+  margin: 0 0 0 10px;
+}
+
+.lf-color-component input[type='number'] {
+  width: 50px;
+  margin: 0 0 0 10px;
+}
+
+.lf-color-preview {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 5px;
+}
+
+.lf-preview {
+  height: 60px;
+  width: 60px;
+}
+
+.lf-popover-snapshot {
+  width: 150px;
+}
+.lf-popover-snapshot h5 {
+  margin: 5px 0 10px 0;
+  font-size: 0.75rem;
+}
+.lf-popover-snapshot a {
+  display: block;
+  text-decoration: none;
+}
+.lf-popover-snapshot a:before {
+  content: '⥼';
+  margin-right: 5px;
+}
+.lf-popover-snapshot .lf-note {
+  display: block;
+  margin-top: 10px;
+  color: #999;
+}
+.lf-player-controls > div {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.lf-player-controls > div:first-child {
+  margin-left: 0px;
+}
+.lf-player-controls > div:last-child {
+  margin-right: 0px;
+}
+</style><style data-styled="active" data-styled-version="5.3.8"></style></head>
+<body class="navbar-fixed breadcrumbs-fixed" style="" data-new-gr-c-s-check-loaded="14.1184.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1184.0">
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+
+		<script type="text/javascript">
+			window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+		</script><script src="./Venn Diagrams - Genomics Biotools_files/jquery-2.0.3.min.js.download"></script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<script type="text/javascript">
+ window.jQuery || document.write("<script src='/assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
+</script>
+<![endif]-->
+
+
+		<script type="text/javascript">
+			if("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="./Venn Diagrams - Genomics Biotools_files/bootstrap.min.js.download"></script>
+		<script src="./Venn Diagrams - Genomics Biotools_files/typeahead-bs2.min.js.download"></script>
+
+
+		<!-- ace scripts -->
+
+		<script src="./Venn Diagrams - Genomics Biotools_files/ace-elements.min.js.download"></script>
+		<script src="./Venn Diagrams - Genomics Biotools_files/ace.min.js.download"></script>
+
+		<div class="navbar navbar-default navbar-fixed-top" id="navbar">
+
+			<div class="navbar-container" id="navbar-container">
+				<div class="navbar-header pull-left">
+					<a href="https://www.biotools.fr/" class="navbar-brand">
+						<large>
+							<i class="icon-code-fork"></i>
+							BioTools.fr 
+						</large>
+						<button class="btn btn-minier btn-primary" disabled="disabled">Bioinformatics Tools for genomics and transcriptomics analyses</button>
+					</a><!-- /.brand -->
+				</div><!-- /.navbar-header -->
+
+			</div><!-- /.container -->
+		</div>
+
+		<!-- Main Container -->
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="main-container-inner">
+				<a class="menu-toggler" id="menu-toggler" href="https://www.biotools.fr/misc/venny#">
+					<span class="menu-text"></span>
+				</a>
+
+					<div class="sidebar sidebar-fixed" id="sidebar">
+
+					<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+						&nbsp;
+					</div>
+
+					<ul class="nav nav-list">
+						<li>
+							<a href="https://www.biotools.fr/">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> Dashboard </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="http://galaxy.biotools.fr/" target="_blank">
+								<i style="background:url(&#39;/images/galaxy-icon-small.png&#39;) no-repeat;margin-left:5px;"><img src="./Venn Diagrams - Genomics Biotools_files/1pixel.gif" style="border:0; width:27px; height:20px"></i>
+								<span class="menu-text"> Galaxy </span>
+							</a>
+						</li>
+						<li>
+
+							<a href="https://www.biotools.fr/misc/venny#" class="dropdown-toggle">
+								<i style="background:url(&#39;/images/heatmap_small.png&#39;) no-repeat;margin-left:5px;"><img src="./Venn Diagrams - Genomics Biotools_files/1pixel.gif" style="border:0; width:27px; height:20px"></i>
+								<span class="menu-text"> ChIP Association Tester </span>
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu">
+								<li>
+									<a href="https://www.biotools.fr/CAT/">
+										<i class="icon-double-angle-right"></i>
+										<span class="menu-text"> About CAT </span>
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/CAT/drosoCAT">
+										<i class="icon-double-angle-right"></i>
+										<span class="menu-text"> drosoCAT </span>
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/CAT/mouseCAT">
+										<i class="icon-double-angle-right"></i>
+										<span class="menu-text"> mouseCAT </span>
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/CAT/humanCAT">
+										<i class="icon-double-angle-right"></i>
+										<span class="menu-text"> humanCAT </span>
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/CAT/webCAT">
+										<i class="icon-double-angle-right"></i>
+										<span class="menu-text"> webCAT </span>
+									</a>
+								</li>
+							</ul>
+						</li>
+
+
+						<li>
+
+							<a href="https://www.biotools.fr/misc/venny#" class="dropdown-toggle">
+								<i style="background:url(&#39;/images/drosophila-icon-small2.png&#39;) no-repeat;margin-left:5px;"><img src="./Venn Diagrams - Genomics Biotools_files/1pixel.gif" style="border:0; width:27px; height:20px"></i>
+								<span class="menu-text">Drosophila</span>
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu">
+								<li>
+									<a href="https://www.biotools.fr/drosophila/phenotypes">
+										<i class="icon-double-angle-right"></i>
+										Phenotype Search
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/drosophila/fbgn_converter">
+										<i class="icon-double-angle-right"></i>
+										Flybase ID converter
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/drosophila/genetic_interactions">
+										<i class="icon-double-angle-right"></i>
+										Genetic Interactions search
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/drosophila/protein_interactions">
+										<i class="icon-double-angle-right"></i>
+										Protein Interactions search
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/drosophila/ppi_cytoscape">
+										<i class="icon-double-angle-right"></i>
+										Protein Interacting pairs
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/drosophila/fbgn_to_bed">
+										<i class="icon-double-angle-right"></i>
+										FBgn ID to BED format
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/drosophila/human_disease_model_network">
+										<i class="icon-double-angle-right"></i>
+										Human Disease Models
+									</a>
+								</li>
+
+							</ul>
+						</li>
+
+
+						<li>
+
+							<a href="https://www.biotools.fr/misc/venny#" class="dropdown-toggle">
+								<i style="background:url(&#39;/images/mouse-icon-small2.png&#39;) no-repeat;margin-left:5px;"><img src="./Venn Diagrams - Genomics Biotools_files/1pixel.gif" style="border:0; width:27px; height:20px"></i>
+								<span class="menu-text">Mouse</span>
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu">
+
+								<li>
+									<a href="https://www.biotools.fr/mouse/ucsc_id_converter">
+										<i class="icon-double-angle-right"></i>
+										UCSC ID Converter
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/mouse/refseq_symbol_converter">
+										<i class="icon-double-angle-right"></i>
+										refSeq to Symbol Converter
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/mouse/ensembl_symbol_converter">
+										<i class="icon-double-angle-right"></i>
+										ENSEMBL Gene ID Converter
+									</a>
+								</li>
+
+							</ul>
+						</li>
+
+						<li>
+
+							<a href="https://www.biotools.fr/misc/venny#" class="dropdown-toggle">
+								<i style="background:url(&#39;/images/vitruvian_man_icon2.png&#39;) no-repeat;margin-left:5px;"><img src="./Venn Diagrams - Genomics Biotools_files/1pixel.gif" style="border:0; width:27px; height:20px"></i>
+								<span class="menu-text">Human</span>
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu">
+
+								<li>
+									<a href="https://www.biotools.fr/human/ucsc_id_converter">
+										<i class="icon-double-angle-right"></i>
+										UCSC ID Converter
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/human/refseq_symbol_converter">
+										<i class="icon-double-angle-right"></i>
+										refSeq to Symbol Converter
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/human/ensembl_symbol_converter">
+										<i class="icon-double-angle-right"></i>
+										ENSEMBL Gene ID Converter
+									</a>
+								</li>
+
+
+							</ul>
+						</li>
+
+						<li>
+
+							<a href="https://www.biotools.fr/misc/venny#" class="dropdown-toggle">
+								<i style="background:url(&#39;/images/chick_icon.jpg&#39;) no-repeat;margin-left:5px;"><img src="./Venn Diagrams - Genomics Biotools_files/1pixel.gif" style="border:0; width:27px; height:20px"></i>
+								<span class="menu-text">Chicken</span>
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu">
+
+								<li>
+									<a href="https://www.biotools.fr/chicken/ensembl_symbol_converter">
+										<i class="icon-double-angle-right"></i>
+										ENSEMBL Gene ID Converter
+									</a>
+								</li>
+
+							</ul>
+						</li>
+
+						<li>
+
+							<a href="https://www.biotools.fr/misc/venny#" class="dropdown-toggle">
+								<i style="background:url(&#39;/images/pubmed.png&#39;) no-repeat;margin-left:5px;"><img src="./Venn Diagrams - Genomics Biotools_files/1pixel.gif" style="border:0; width:27px; height:20px"></i>
+								<span class="menu-text">PubMed</span>
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu">
+
+								<li>
+									<a href="https://www.biotools.fr/pubmed/search">
+										<i class="icon-double-angle-right"></i>
+										Basic Search
+									</a>
+								</li>
+								<li>
+									<a href="https://www.biotools.fr/pubmed/multi_search">
+										<i class="icon-double-angle-right"></i>
+										Multi-Keyword Search
+									</a>
+								</li>
+
+							</ul>
+						</li>
+
+						<li class="active">
+							<a href="https://www.biotools.fr/misc/venny#" class="dropdown-toggle">
+								<i class="icon-tag"></i>
+								<span class="menu-text"> Misc. Tools </span>
+
+								<b class="arrow icon-angle-down"></b>
+							</a>
+
+							<ul class="submenu">
+								<li class="active">
+									<a href="https://www.biotools.fr/misc/venny">
+										<i class="icon-double-angle-right"></i>
+										Venn Diagrams
+									</a>
+								</li>
+								<li>
+									<a href="https://www.biotools.fr/misc/column_cut">
+										<i class="icon-double-angle-right"></i>
+										Cut Data Column
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/misc/pad_bedfile">
+										<i class="icon-double-angle-right"></i>
+										Pad nucleotides in BED file
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/misc/sample">
+										<i class="icon-double-angle-right"></i>
+										Random Sampler
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/misc/colour_picker">
+										<i class="icon-double-angle-right"></i>
+										Colour Picker
+									</a>
+								</li>
+
+								<li>
+									<a href="https://www.biotools.fr/qPCR/">
+										<i class="icon-double-angle-right"></i>
+										qPCR calculations
+									</a>
+								</li>
+
+							</ul>
+						</li>
+
+						<li>
+							<a href="https://cran.biotools.fr/" target="_blank">
+								<i style="background:url(&#39;/images/cran-icon.png&#39;) no-repeat;margin-left:5px;"><img src="./Venn Diagrams - Genomics Biotools_files/1pixel.gif" style="border:0; width:25px; height:19px"></i>
+								<span class="menu-text"> CRAN Repository </span>
+							</a>
+						</li>
+
+					</ul><!-- /.nav-list -->
+
+					<div class="sidebar-collapse" id="sidebar-collapse">
+						<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+					</div>
+
+					<script type="text/javascript">
+						try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+					</script>
+				</div>
+				<div class="main-content">
+
+						<div class="breadcrumbs breadcrumbs-fixed" id="breadcrumbs">
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="https://www.biotools.fr/">Home</a>
+							</li>
+
+														<li>
+																<a href="https://www.biotools.fr/misc/">Miscellaneous Tools</a>
+															</li>
+							
+														<li class="active">Venn Diagrams</li>
+							
+						</ul><!-- /.breadcrumb -->
+
+					</div>
+
+
+<!--
+	<link href="http://twitter.github.io/bootstrap/assets/js/google-code-prettify/prettify.css" rel="stylesheet" media="screen">
+	<link href="http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+	<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>	<script type="text/javascript" src="/js/jquery.venny.min.js"></script>
+-->
+<!--
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap.min.js"></script>	<script type="text/javascript" src="/js/jquery.venny.min.js"></script>
+-->
+<!-- 	<link href="http://twitter.github.io/bootstrap/assets/js/google-code-prettify/prettify.css" rel="stylesheet" media="screen"> -->
+	<script type="text/javascript" src="./Venn Diagrams - Genomics Biotools_files/jquery.min.js.download"></script>
+
+	<script type="text/javascript" src="./Venn Diagrams - Genomics Biotools_files/jquery.venny.js.download"></script>
+	<script language="Javascript">
+		jQuery( document ).ready(function( jQ ) {
+
+			function getArrayFromArea(areaID) {
+				var lines = jQ("#"+areaID).val().split("\n");
+				var table = new Array();
+				for (var lindex in lines) {
+					table.push(lines[lindex]);
+				}
+				return (table);
+			}
+
+			function updateVenny() {
+				var seriesTable = new Array();
+				if (jQ("#area1").val() != "") {
+					seriesTable.push({
+						name: jQ("#name1").val(),
+						data: getArrayFromArea("area1")
+					});
+				}
+		           if (jQ("#area2").val() != "") {
+		            seriesTable.push({
+		                name: jQ("#name2").val(),
+		                data: getArrayFromArea("area2")
+		            });
+		           }
+		           if (jQ("#area3").val() != "") {
+		            seriesTable.push({
+		                name: jQ("#name3").val(),
+		                data: getArrayFromArea("area3")
+		            });
+		           }
+		           if (jQ("#area4").val() != "") {
+		            seriesTable.push({
+		                name: jQ("#name4").val(),
+		                data: getArrayFromArea("area4")
+		            });
+		           }
+		           if (jQ("#area5").val() != "") {
+		            seriesTable.push({
+		                name: jQ("#name5").val(),
+		                data: getArrayFromArea("area5")
+		            });
+		           }
+
+				jQ("#venny-container").venny({
+					series: seriesTable,
+					fnClickCallback: function() {
+						var value = "";
+						if (this.listnames.length == 1) {
+							value += "Elements only in ";
+						} else {
+							value += "Common elements in ";
+						}
+						for (name in this.listnames) {
+							value += this.listnames[name] + " ";
+						}
+						value += ":\n";
+						for (val in this.list) {
+							value += this.list[val] + "\n";
+						}
+						jQ("#names").val(value);
+					}
+				});
+			}
+
+			jQ("#setexample").click(function() {
+				jQ("#name1").val("Actors");
+				jQ("#area1").val("Marilyn Monroe\nArnold Schwarzenegger\nJack Nicholson\nBarbra Streisand\nRobert de Niro\nDean Martin\nHarrison Ford");
+				jQ("#name2").val("Singers");
+				jQ("#area2").val("Freddy Mercury\nBarbra Streisand\nDean Martin\nRicky Martin\nCeline Dion\nMarilyn Monroe");
+				updateVenny();
+			});
+
+			jQ('[id^="clear"]').click(function() {
+				var index = jQ(this).attr("id").split("_")[1];
+				jQ("#area" + index).val("");
+				jQ("#name" + index).val("List " + index);
+				updateVenny();
+			});
+
+			// update the view when any fields change
+			jQ("[id^=name]").change(function() {
+				updateVenny();
+			});
+			jQ("[id^=area]").change(function() {
+					updateVenny();
+			});
+
+			// first init of the venny plugin
+			jQ("#venny-container").venny({ series: [] });
+
+
+
+		});
+	</script>
+	<style type="text/css">
+		/*add classes control-group*/
+
+		/* green */
+		.control-group.green .control-label,
+		.control-group.green .help-block,
+		.control-group.green .help-inline {
+		  color: #3DBE1D;
+		}
+		.control-group.green .checkbox,
+		.control-group.green .radio,
+		.control-group.green input,
+		.control-group.green select,
+		.control-group.green textarea {
+		  color: #3DBE1D;
+		}
+
+		.control-group.green input,
+		.control-group.green select,
+		.control-group.green textarea {
+		  border-color: #3DBE1D;
+		  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		}
+
+		.control-group.green input:focus,
+		.control-group.green select:focus,
+		.control-group.green textarea:focus {
+		  border-color: #0FB000;
+		  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #3DBE1D;
+		     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #3DBE1D;
+		          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #3DBE1D;
+		}
+
+		.control-group.green .input-prepend .add-on,
+		.control-group.green .input-append .add-on {
+		  color: #3DBE1D;
+		  background-color: #C4FFC6;
+		  border-color: #3DBE1D;
+		}
+
+
+		/* blue */
+		.control-group.blue .control-label,
+		.control-group.blue .help-block,
+		.control-group.blue .help-inline {
+		  color: #4FB9FF;
+		}
+		.control-group.blue .checkbox,
+		.control-group.blue .radio,
+		.control-group.blue input,
+		.control-group.blue select,
+		.control-group.blue textarea {
+		  color: #4FB9FF;
+		}
+
+		.control-group.blue input,
+		.control-group.blue select,
+		.control-group.blue textarea {
+		  border-color: #4FB9FF;
+		  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		}
+
+		.control-group.blue input:focus,
+		.control-group.blue select:focus,
+		.control-group.blue textarea:focus {
+		  border-color: #0064B0;
+		  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #4FB9FF;
+		     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #4FB9FF;
+		          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #4FB9FF;
+		}
+
+		.control-group.blue .input-prepend .add-on,
+		.control-group.blue .input-append .add-on {
+		  color: #4FB9FF;
+		  background-color: #C4DEFF;
+		  border-color: #4FB9FF;
+		}
+
+
+		/* pink */
+		.control-group.pink .control-label,
+		.control-group.pink .help-block,
+		.control-group.pink .help-inline {
+		  color: #C91C61;
+		}
+		.control-group.pink .checkbox,
+		.control-group.pink .radio,
+		.control-group.pink input,
+		.control-group.pink select,
+		.control-group.pink textarea {
+		  color: #C91C61;
+		}
+
+		.control-group.pink input,
+		.control-group.pink select,
+		.control-group.pink textarea {
+		  border-color: #C91C61;
+		  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		}
+
+		.control-group.pink input:focus,
+		.control-group.pink select:focus,
+		.control-group.pink textarea:focus {
+		  border-color: #B00000;
+		  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #C91C61;
+		     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #C91C61;
+		          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #C91C61;
+		}
+
+		.control-group.pink .input-prepend .add-on,
+		.control-group.pink .input-append .add-on {
+		  color: #C91C61;
+		  background-color: #FFC4C4;
+		  border-color: #C91C61;
+		}
+
+		/* yellow */
+		.control-group.yellow .control-label,
+		.control-group.yellow .help-block,
+		.control-group.yellow .help-inline {
+		  color: #f3f300;
+		}
+		.control-group.yellow .checkbox,
+		.control-group.yellow .radio,
+		.control-group.yellow input,
+		.control-group.yellow select,
+		.control-group.yellow textarea {
+		  color: #f3f300;
+		}
+
+		.control-group.yellow input,
+		.control-group.yellow select,
+		.control-group.yellow textarea {
+		  border-color: #f3f300;
+		  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		}
+
+		.control-group.yellow input:focus,
+		.control-group.yellow select:focus,
+		.control-group.yellow textarea:focus {
+		  border-color: #c0c000;
+		  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #f3f300;
+		     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #f3f300;
+		          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #f3f300;
+		}
+
+		.control-group.yellow .input-prepend .add-on,
+		.control-group.yellow .input-append .add-on {
+		  color: #f3f300;
+		  background-color: #ffff91;
+		  border-color: #f3f300;
+		}
+
+		.control-group.orange .control-label,
+		.control-group.orange .help-block,
+		.control-group.orange .help-inline {
+		  color: #ffa54f;
+		}
+		.control-group.orange .checkbox,
+		.control-group.orange .radio,
+		.control-group.orange input,
+		.control-group.orange select,
+		.control-group.orange textarea {
+		  color: #ffa54f;
+		}
+
+		.control-group.orange input,
+		.control-group.orange select,
+		.control-group.orange textarea {
+		  border-color: #ffa54f;
+		  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		}
+
+		.control-group.orange input:focus,
+		.control-group.orange select:focus,
+		.control-group.orange textarea:focus {
+		  border-color: #b15700;
+		  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ffa54f;
+		     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ffa54f;
+		          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ffa54f;
+		}
+
+		.control-group.orange .input-prepend .add-on,
+		.control-group.orange .input-append .add-on {
+		  color: #ffa54f;
+		  background-color: #ffe1c5;
+		  border-color: #ffa54f;
+		}
+
+	</style>
+	<div style="padding-left:20px;">
+
+		<!-- Main hero unit for a primary marketing message or call to action -->
+		<div class="page-header">
+			<h1>Venn Diagrams
+				<small>
+					<i class="icon-double-angle-right"></i>
+					Paste up to <strong>five</strong> lists using one row per element, then click
+					the numbers to see the results.
+				</small>
+			</h1>
+		</div>
+				<div class="row">
+					<div class="col-sm-7">
+						<div class="row-fluid">
+							<div id="venny-container" style="width: 680px; height: 450px;"><div id="frame" style="position: relative; left: 0pt; top: 5pt; width: 550px; height: 445px;"><canvas id="canvasEllipse" width="500" height="415"></canvas><div class="number-black" style="position: absolute; left: 120px; top: 100px;" id="resultC10000">485</div><div class="number-black" style="position: absolute; left: 360px; top: 100px;" id="resultC01000">48</div><div class="number-black" style="position: absolute; left: 245px; top: 330px;" id="resultC00100">240</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC00010">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC00001">0</div><div class="number-black" style="position: absolute; left: 245px; top: 100px;" id="resultC11000">106</div><div class="number-black" style="position: absolute; left: 170px; top: 220px;" id="resultC10100">495</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC10010">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC10001">0</div><div class="number-black number-empty" style="position: absolute; left: 320px; top: 220px;" id="resultC01100">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC01010">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC01001">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC00110">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC00101">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC00011">0</div><div class="number-black" style="position: absolute; left: 245px; top: 175px;" id="resultC11100">174</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC11010">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC11001">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC10110">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC10101">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC10011">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC01110">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC01101">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC01011">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC00111">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC11110">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC11101">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC11011">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC10111">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC01111">0</div><div class="number-black number-empty" style="position: absolute; left: -1000px; top: -2200px;" id="resultC11111">0</div><div style="position: absolute; left: 10px; top: 0px; color: rgb(34, 139, 34);" id="label1">old</div><div style="position: absolute; left: 420px; top: 0px; color: rgb(51, 102, 187);" id="label2">ps</div><div style="position: absolute; left: 180px; top: 420px; color: rgb(153, 51, 78);" id="label3">zs</div><div style="position: absolute; left: -1000px; top: -2200px; color: rgb(34, 139, 34);" id="label4"></div><div style="position: absolute; left: -1000px; top: -2200px; color: rgb(255, 165, 79);" id="label5"></div></div><div id="module-export" style="position: relative; left: 500px; top: -450px; width: 180px; height: 60px;"><canvas id="canvasExport" width="30" height="20"></canvas><div id="menu" style="position: relative;width: 160px; height: 30px; display:none; left: 0px; top: 2px;"><div style="box-shadow: 3px 3px 10px rgb(136, 136, 136); border: 1px solid rgb(160, 160, 160); background: none repeat scroll 0% 0% rgb(255, 255, 255);padding: 5px 0px;"><div id="format-png" style="padding: 0px 10px; background: none repeat scroll 0% 0% transparent; color: rgb(48, 48, 48); font-size: 12px;">Download PNG image</div></div></div></div></div>
+						</div>
+						<div class="row-fluid">
+							<div class="span12">
+								<p> Click on a number to show the corresponding elements: </p>
+								<textarea id="names" style="width: 100%;" wrap="off" rows="8" data-gramm="false" wt-ignore-input="true"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-5">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="control-group green">
+									<input class="span6" id="name1" type="text" style="font-weight: bold;" value="List 1" maxlength="11">
+									<div class="controls controls-row"><template shadowrootmode="closed"><lt-mirror contenteditable="false" style="display: none;"><template shadowrootmode="closed"><lt-highlighter contenteditable="false" style="display: none;"><lt-div spellcheck="false" class="lt-highlighter__wrapper" style="transform: none !important; transform-origin: 86.8px 39.4px !important; zoom: 1 !important; width: 155px !important; height: 77.2px !important; margin-top: 0.8px !important; margin-left: 0.8px !important;"><lt-div class="lt-highlighter__scroll-element" style="top: -21113.6px !important; left: 0px !important; width: 155px !important; height: 21195px !important;"></lt-div></lt-div></lt-highlighter><slot></slot><link href="chrome-extension://oldceeleldhonbafppcapldpdifcinji/content/styles/shadow.css" rel="stylesheet"></template><lt-div spellcheck="false" class="lt-mirror__wrapper notranslate" data-lt-scroll-top="21113.599609375" data-lt-scroll-left="0" data-lt-scroll-top-scaled="21113.599609375" data-lt-scroll-left-scaled="0" data-lt-scroll-top-scaled-and-zoomed="21113.599609375" data-lt-scroll-left-scaled-and-zoomed="0" style="border: 0.8px solid rgb(61, 190, 29) !important; border-radius: 0px !important; direction: ltr !important; font: 400 14px / 1.2 &quot;Open Sans&quot; !important; font-synthesis: weight style small-caps !important; hyphens: manual !important; letter-spacing: normal !important; line-break: auto !important; margin: 0px !important; padding: 5px 4px !important; text-align: start !important; text-decoration: none solid rgb(61, 190, 29) !important; text-indent: 0px !important; text-rendering: auto !important; text-transform: none !important; transform: none !important; transform-origin: 86.8px 39.4px !important; unicode-bidi: normal !important; white-space: pre !important; word-spacing: 0px !important; overflow-wrap: normal !important; writing-mode: horizontal-tb !important; zoom: 1 !important; -webkit-locale: &quot;en&quot; !important; -webkit-rtl-ordering: logical !important; width: 147px !important; height: 67.2px !important;"><lt-div class="lt-mirror__canvas" style="margin-top: -21113.6px !important; margin-left: 0px !important; width: 147px !important; height: 21185px !important;"><lt-span>101249794
+101261835
+101250767
+100316894
+101255324
+101263630
+101257012
+101251527
+101250584
+101268268
+101261529
+101253585
+101250420
+101249497
+101257269
+101259925
+101245191
+101255191
+101245840
+101257817
+101244894
+101268294
+101261228
+101248276
+101251303
+543521
+101267241
+101268572
+101257927
+778336
+101254878
+544313
+101249973
+543942
+101266537
+101267981
+101247288
+101248026
+101255829
+101254223
+101253759
+101266883
+101266231
+101255501
+101261722
+101265980
+101246280
+101253566
+544157
+101244186
+101267147
+101258870
+101246126
+101265426
+101259163
+100134881
+101246087
+101259436
+101262661
+101247200
+101247807
+543701
+101253771
+104645665
+101258980
+101254960
+101251154
+101251967
+101257277
+543923
+100301928
+101250189
+101246277
+101253648
+101258862
+104644843
+101264331
+543731
+101250935
+101253953
+101249123
+101246841
+101258589
+101267023
+101260171
+101251407
+543680
+101260164
+101263533
+101256817
+101246840
+100037499
+101248717
+101260892
+101248759
+101250515
+101259548
+101247196
+101250514
+101259007
+101266759
+101250923
+101268338
+101254270
+101246688
+101254991
+101244450
+101254785
+543605
+101252505
+101244006
+101266533
+544031
+101263592
+101258062
+108511945
+101248124
+101245149
+101268273
+101247272
+101261978
+101265719
+101266806
+101248884
+101260084
+101258346
+101250024
+101261140
+101261739
+101246267
+101263355
+101256309
+101250721
+100750252
+544056
+101265833
+101249565
+101256409
+778249
+544103
+543880
+101267711
+101265728
+101244651
+109120183
+101245341
+101264464
+101250113
+101266355
+101262633
+101248126
+101246295
+544009
+101250270
+104645408
+101255830
+101245711
+101253598
+101246812
+544131
+101255509
+101262581
+101261019
+100134883
+101247880
+100134896
+543875
+104648156
+101268227
+101267365
+101263123
+101256208
+543691
+101247830
+101267632
+101261141
+101265946
+101244796
+101266245
+101266924
+101258485
+101258285
+101245413
+101259923
+101246342
+101263892
+101055527
+543603
+101250443
+101261634
+101259138
+101265590
+101262765
+101263158
+101258872
+101259487
+101244435
+101247462
+101251639
+101260320
+778320
+101267693
+101255255
+101267530
+101250636
+101248778
+101255480
+101260284
+101260046
+101266189
+101252760
+101258376
+101250444
+100037497
+101249144
+101267355
+101245084
+101264731
+101259884
+101259371
+101255122
+101244827
+544163
+101267347
+101264793
+101255654
+101254501
+101255031
+101255348
+101247838
+101259275
+101257792
+101261042
+100301908
+100316895
+101247647
+101246025
+101267862
+novel.108
+101247012
+101252689
+101251018
+101263226
+543891
+101254095
+101254906
+101255248
+101252588
+101247427
+101254509
+101258155
+101248076
+101267223
+101267943
+101254880
+101247643
+101258203
+101265190
+101249811
+101267118
+101251456
+101254394
+101259661
+101262066
+101258509
+100736459
+100037498
+101055516
+544297
+101263186
+101265380
+101248957
+101055602
+101262584
+104647238
+101256882
+101252968
+778275
+101268869
+101258588
+101256151
+101258514
+novel.246
+104646748
+101267065
+544250
+101261619
+101249224
+104645678
+101261459
+101252846
+101244167
+101267005
+778339
+101256847
+101264704
+101257315
+101258429
+101255096
+101254002
+101244142
+101263888
+101257623
+101250181
+543826
+101254316
+101253265
+104645830
+543654
+101264048
+101262200
+101260888
+101258601
+101250009
+100736433
+101248670
+101268236
+novel.498
+104648541
+104646058
+101245982
+101268787
+101247773
+101256625
+778212
+101245158
+101261181
+101249062
+101258270
+101248673
+novel.667
+101260794
+101268860
+101264804
+101264170
+101251823
+101267858
+101254379
+101251119
+101263441
+101267816
+109120423
+544202
+544028
+101263872
+101256209
+101267548
+101262611
+101260244
+101259555
+101055548
+101266314
+101258576
+101245282
+101261434
+101055585
+101244691
+101267950
+544165
+543855
+101254118
+101245973
+101251453
+101256961
+101258071
+100134888
+101256003
+101244012
+543806
+101247056
+101259911
+101248520
+101262296
+101263275
+101267829
+101249070
+101248932
+101267985
+778350
+101263766
+101246836
+101264678
+101249209
+101055596
+101253243
+101255604
+101251309
+101265985
+101247551
+101245242
+101251195
+544144
+544010
+101249560
+101257219
+101245190
+101260125
+101254846
+101260481
+101263877
+543944
+112941581
+101249141
+101256373
+101263469
+101255223
+101264460
+100135703
+101244425
+101256359
+101268729
+101253408
+101256298
+101055501
+101245634
+104644345
+544260
+101246917
+101250190
+101245126
+101249249
+112940330
+101253038
+101263903
+101263696
+novel.447
+101257192
+101251620
+101244740
+101264700
+101251606
+101254101
+543736
+104648613
+101260974
+101266726
+100736503
+101264912
+101244095
+101267186
+101250974
+101264690
+101247465
+101266243
+101246954
+101255390
+101262225
+101248335
+101257973
+101262356
+101261854
+101259682
+101247995
+101248467
+101252910
+101264936
+101244514
+101261461
+101265187
+101249653
+104645842
+101253143
+101260188
+101249583
+101245153
+101256908
+101266611
+100736505
+101245462
+101247659
+101257961
+100750255
+101246727
+101246543
+101260039
+543815
+101251700
+100301944
+101257337
+101260531
+109119361
+101264781
+112940999
+101266908
+101246755
+101267029
+101244582
+101249452
+101255788
+101267001
+101258357
+101246177
+544142
+101259996
+101254787
+101260997
+101255309
+101265981
+112941802
+543614
+101261974
+101265909
+101265977
+101254410
+778364
+100820704
+101259793
+101266721
+101267140
+101267605
+101262226
+104644300
+101256055
+101266964
+101245070
+544290
+101252276
+101265482
+100736444
+102464333
+101261097
+101247526
+101262938
+101250219
+101251432
+101265303
+101257588
+101251301
+101264053
+101243659
+100316891
+100125891
+101244185
+101252615
+101261383
+101261904
+101251005
+104645948
+101267064
+101253917
+778230
+101251653
+101257664
+101244623
+101261408
+101256975
+101252754
+101245601
+101255144
+101252966
+778254
+101250112
+101253945
+101255283
+101262828
+101254004
+101260946
+101258267
+101250104
+101268143
+101252393
+101262614
+101266872
+101263635
+101266620
+101249694
+101247332
+101267695
+novel.224
+101253040
+101267987
+novel.59
+101246112
+101265652
+101262567
+101267468
+101243671
+101265798
+101245715
+112940024
+101252440
+100037501
+101247521
+101268692
+543714
+101261024
+101248573
+101257549
+104648246
+101264681
+101254732
+101246341
+101248469
+104645888
+101261694
+101268306
+101244293
+101268290
+101246357
+novel.836
+108178985
+101252097
+101246328
+543839
+101252947
+101267295
+101265496
+101253025
+101257561
+101260079
+101267703
+543517
+101258194
+104649142
+101055590
+101248144
+101268298
+101248324
+101251569
+101264726
+101264953
+543728
+101249680
+101264093
+101262005
+104645392
+101257929
+101268335
+101253864
+101256639
+100316879
+101247540
+101266268
+101055512
+101259340
+101255079
+101256176
+novel.466
+112941516
+101251394
+101262681
+101256870
+101255313
+101251977
+104648289
+101259649
+101265172
+101268013
+101259967
+101257661
+101256522
+101259229
+101254676
+101246151
+104648424
+101245524
+101246809
+101247280
+101243975
+104645686
+novel.729
+101260175
+101248693
+544136
+104646741
+101248067
+101255007
+101254537
+101244245
+112940102
+101243997
+101247772
+778221
+101265337
+101261347
+101259942
+101245464
+101254597
+101251242
+101268561
+101257776
+101267939
+101247496
+101260206
+101243692
+101245335
+101245497
+101264197
+101260866
+101256273
+101249625
+101265657
+101256620
+101264391
+101257026
+101260808
+543808
+novel.252
+101265262
+101263370
+101263761
+101264428
+novel.547
+101249262
+101260856
+101248897
+112940897
+101258448
+101244426
+101244961
+101263251
+101266767
+112940561
+101253895
+101250536
+101261451
+104646728
+101244694
+novel.56
+101254841
+101249891
+101243841
+101265673
+101259185
+101253551
+101260554
+109120544
+101244548
+101246203
+543993
+101266765
+100134914
+101259423
+101243886
+101255450
+101263419
+101259859
+112941846
+101253750
+101252574
+101260239
+101268570
+101264330
+101257376
+100736493
+101249240
+101258501
+101259276
+101251368
+100134872
+101263054
+101257007
+101262640
+101253295
+101249408
+101258079
+101254713
+101258366
+101260626
+544230
+101258525
+104645999
+109119183
+778255
+778346
+101263961
+101260885
+101260969
+novel.355
+101255883
+101264734
+101243802
+101266582
+101252563
+109118716
+101251286
+101251665
+101259033
+101256570
+101250283
+112941005
+101251878
+101248811
+101262621
+101260726
+101263682
+101262352
+101260469
+778314
+101250999
+101253257
+101255705
+101253128
+novel.492
+101267755
+101253472
+101260131
+101266687
+101248757
+101268303
+101267966
+543684
+104649390
+101264838
+101246381
+101251098
+101250180
+101257330
+101261797
+101259641
+101253214
+544200
+101265780
+101252464
+101247945
+104646600
+101253445
+101260209
+101250624
+novel.486
+101248245
+101266118
+101259170
+101245278
+101254087
+101255003
+101252907
+101252194
+778228
+104646047
+101258780
+100125906
+101265517
+101246738
+101259926
+104644401
+112941722
+101250715
+101249727
+101251532
+101250784
+543990
+101258763
+101247953
+101264719
+101250069
+101267733
+101265450
+101257479
+101248455
+101251327
+101260194
+101252275
+101261456
+101255677
+101255164
+101250435
+101267739
+101253770
+101258781
+101268459
+101255178
+101265495
+101246721
+101262803
+101248223
+101249309
+101252830
+101251284
+101248294
+101263679
+101268780
+101255708
+101254378
+novel.52
+101268894
+101245743
+101262338
+101245548
+101247414
+101264357
+novel.900
+101247544
+101267002
+101257025
+101262912
+novel.275
+101259650
+112940379
+544180
+109120859
+101261073
+112941723
+101263288
+novel.582
+101263926
+101266471
+104647116
+101268689
+101252813
+101263809
+101245843
+101253582
+101254583
+101258723
+101260686
+101266119
+101264778
+101245241
+novel.596
+101265038
+101261932
+101254416
+101250001
+101249045
+101246798
+101260789
+101262282
+101253645
+101266300
+101268229
+101264432
+543634
+101243998
+101250202
+101249721
+101260132
+101258000
+101255928
+novel.919
+101250492
+543900
+101261849
+101257550
+101260054
+101247750
+101267354
+novel.223
+101268503
+101262488
+544100
+101265827
+101265430
+101262930
+101268049
+101246876
+101244758
+100191121
+101247644
+101255981
+543594
+101253579
+101267180
+101250467
+101246484
+101260072
+101267746
+112942159
+101265690
+543914
+101250137
+101247504
+101266834
+100301918
+104645834
+101250294
+101265138
+101252725
+101256026
+101254463
+112940466
+101252730
+104645361
+novel.818
+101260544
+101266343
+101268113
+543824
+101263334
+543711
+101250405
+101244909
+101250521
+101260141
+101251234
+101255929
+101246031
+101249596
+101266923
+104645396
+101266842
+101261913
+100736506
+101253292
+101249814
+101251222
+101243809
+101244060
+101249483
+101248996
+112940567
+101260840
+101245267
+101248919
+101247075
+101259871
+543848
+101265539
+novel.101
+101246594
+101250408
+101246690
+101248899
+101250559
+101262262
+544254
+101261407
+101249561
+101248063
+101258673
+101265170
+101264323
+101257964
+101266980
+101267225
+101267425
+104646528
+101261885
+101246396
+543834
+101246301
+101267151
+101248013
+101260364
+101249605
+101257625
+101256779
+101248260
+novel.791
+101252698
+101260872
+101255038
+101265571
+101246424
+novel.366
+101247596
+101262986
+104645412
+novel.523
+101247334
+101258035
+101055520
+101267431
+101247816
+101243675
+104647562
+101266879
+101263695
+104645765
+101259939
+101265773
+101247154
+101247976
+543670
+101263329
+101255524
+101251958
+101251744
+101268375
+101249132
+101245741
+101250431
+101256719
+101246412
+101244925
+101254356
+101252343
+112941402
+104645573
+101258138
+101055558
+544124
+101256451
+novel.114
+101262115
+101248653
+101253157
+101262869
+101259145
+novel.638
+101268109
+101268757
+101266965
+112940541
+109119806
+101249340
+101262668
+104644464
+101251542
+112941040
+104645520
+101261126
+101259110
+101249481
+104644938
+101262208
+544120
+101250152
+101245385
+101264922
+544034
+100736451
+101257491
+101262884
+101265548
+104648014
+101257419
+101264595
+101248706
+544168
+101252546
+101264586
+101252154
+544149
+101259676
+101258361
+101244184
+104645134
+104649504
+101253377
+101244923
+104648000
+101253044
+543522
+101250310
+101263011
+109119817
+101257629
+101249294
+104649642
+novel.103
+novel.545
+101247959
+109121222
+101260928
+novel.910
+109119317
+101247398
+778273
+101247797
+101261105
+101254582
+novel.182
+104644821
+101249387
+101261189
+101251473
+101254608
+101256744
+101256765
+101250644
+104646830
+101268277
+101261778
+101267723
+novel.728
+101246560
+101261637
+101250352
+101256200
+101258865
+101265720
+101258100
+101260751
+novel.925
+101265918
+101268636
+101245352
+101244366
+101259425
+104647150
+101251122
+101257855
+101263772
+novel.559
+101259447
+544101
+101254274
+101263398
+101250915
+101258226
+novel.427
+101250469
+101255172
+101254612
+101266821
+104648182
+104649684
+101253388
+101263861
+104646842
+101255091
+101251021
+101255160
+544134
+101262768
+104646939
+101253028
+101249759
+101262843
+101055556
+112941966
+101265748
+544264
+novel.221
+101261523
+101260836
+101266542
+101267725
+104648220
+101244819
+101268222
+novel.689
+101256099
+101244650
+101246650
+101261180
+101246783
+101257043
+101251702
+101265243
+101243929
+543856
+101245147
+novel.709
+101264847
+104649476
+101266317
+101251123
+112941696
+104645741
+101248812
+104644498
+101260831
+101254450
+104645711
+101250756
+101265270
+101261737
+101264515
+101266508
+101250087
+101247980
+101261598
+novel.897
+100736511
+109120148
+101255470
+101248495
+101257892
+​</lt-span></lt-div></lt-div></lt-mirror><slot></slot><link href="chrome-extension://oldceeleldhonbafppcapldpdifcinji/content/styles/shadow.css" rel="stylesheet"></template>
+										<textarea class="span10" id="area1" wrap="off" rows="4" data-gramm="false" wt-ignore-input="true" data-lt-tmp-id="lt-840779" spellcheck="false"></textarea>
+										<a class="btn btn-link" id="clear_1" href="javascript:void(0)">clear</a>
+									</div>
+								</div>
+			 				</div>
+			 			</div>
+			 			<br>
+						<div class="row">
+							<div class="col-sm-12">
+			 					<div class="control-group blue">
+									<input class="span6" id="name2" type="text" style="font-weight: bold;" value="List 2" maxlength="11">
+									<div class="controls controls-row"><template shadowrootmode="closed"><lt-mirror contenteditable="false" style="display: none;"><template shadowrootmode="closed"><lt-highlighter contenteditable="false" style="display: none;"><lt-div spellcheck="false" class="lt-highlighter__wrapper" style="transform: none !important; transform-origin: 86.8px 39.4px !important; zoom: 1 !important; width: 155px !important; height: 77.2px !important; margin-top: 0.8px !important; margin-left: 0.8px !important;"><lt-div class="lt-highlighter__scroll-element" style="top: -5456px !important; left: 0px !important; width: 155px !important; height: 5537px !important;"></lt-div></lt-div></lt-highlighter><slot></slot><link href="chrome-extension://oldceeleldhonbafppcapldpdifcinji/content/styles/shadow.css" rel="stylesheet"></template><lt-div spellcheck="false" class="lt-mirror__wrapper notranslate" data-lt-scroll-top="5456" data-lt-scroll-left="0" data-lt-scroll-top-scaled="5456" data-lt-scroll-left-scaled="0" data-lt-scroll-top-scaled-and-zoomed="5456" data-lt-scroll-left-scaled-and-zoomed="0" style="border: 0.8px solid rgb(79, 185, 255) !important; border-radius: 0px !important; direction: ltr !important; font: 400 14px / 1.2 &quot;Open Sans&quot; !important; font-synthesis: weight style small-caps !important; hyphens: manual !important; letter-spacing: normal !important; line-break: auto !important; margin: 0px !important; padding: 5px 4px !important; text-align: start !important; text-decoration: none solid rgb(79, 185, 255) !important; text-indent: 0px !important; text-rendering: auto !important; text-transform: none !important; transform: none !important; transform-origin: 86.8px 39.4px !important; unicode-bidi: normal !important; white-space: pre !important; word-spacing: 0px !important; overflow-wrap: normal !important; writing-mode: horizontal-tb !important; zoom: 1 !important; -webkit-locale: &quot;en&quot; !important; -webkit-rtl-ordering: logical !important; width: 147px !important; height: 67.2px !important;"><lt-div class="lt-mirror__canvas" style="margin-top: -5456px !important; margin-left: 0px !important; width: 147px !important; height: 5527px !important;"><lt-span>101249794
+100301928
+544157
+101254906
+101261835
+544056
+101251527
+101258980
+101256882
+101250420
+101263630
+101251407
+101245084
+101250767
+101249973
+108511945
+100736433
+101248276
+101256817
+544313
+101055585
+101265719
+101257012
+101257927
+101267981
+101250935
+101261228
+101253038
+101265190
+100134881
+100750252
+101267147
+101258270
+101261073
+101250113
+101264331
+544031
+544034
+100134883
+101261140
+101250584
+544260
+101255324
+101266806
+101268268
+101255501
+101248717
+101265426
+101249497
+101261141
+101255191
+101261019
+101257269
+101258870
+101259275
+101259793
+101268273
+543603
+101248520
+101251303
+101247288
+101258155
+543880
+101247200
+novel.498
+101259925
+101259138
+101261347
+101259436
+101262296
+544131
+101267295
+101267711
+101246812
+101263533
+101249381
+101267065
+101253598
+101255829
+101254676
+101247772
+101261978
+101253585
+101246280
+100125891
+101243659
+543942
+101265946
+543826
+101248759
+778214
+101260046
+101263186
+100301908
+101245840
+101267223
+101265833
+101266533
+101245191
+101260171
+101249565
+101257817
+101267005
+101266924
+100316894
+544066
+101263892
+101267758
+101055501
+101248124
+101246688
+101267145
+101251309
+101267858
+543701
+104644843
+101261885
+101245158
+101055516
+100301944
+101252060
+101261529
+101251639
+101253257
+101250721
+101055602
+101268787
+101253566
+101257026
+101266189
+101251823
+104645665
+101255096
+101253648
+543634
+101268572
+101246126
+101265980
+101248673
+101247807
+101251569
+101244435
+101252760
+101258862
+101247647
+101262661
+101266537
+101254095
+544163
+101262765
+101267241
+104645686
+101257677
+101266883
+104646058
+101247521
+101266231
+101257219
+101249309
+101250923
+544009
+104647238
+101250181
+101268294
+104645408
+101244186
+101268143
+101250636
+100316891
+101251793
+101260125
+101267548
+101265917
+544202
+101253295
+101254410
+101244894
+101244651
+101252440
+544028
+101258576
+101267365
+101249249
+101245413
+101244796
+101247012
+101244636
+101251453
+101245341
+100736503
+101246836
+101267950
+101244142
+101253953
+101244425
+101245743
+101254501
+101247056
+101250024
+101259661
+101248706
+101258657
+101245711
+101263355
+101250270
+101258589
+104645948
+101256209
+101257277
+101259548
+101250189
+101265652
+101247750
+544100
+101248778
+101266245
+778230
+100736493
+101253243
+101259996
+101258062
+101264053
+100037498
+101259163
+544101
+101260720
+101267943
+101246277
+101265981
+101266765
+543731
+101264719
+101254960
+101262005
+101267530
+101251855
+101266965
+101255654
+101251154
+101244095
+101246841
+101266726
+101245149
+101246267
+101246112
+101250294
+100736459
+101264778
+101244827
+100316895
+544165
+101267862
+100037497
+104648613
+101262152
+101254394
+101261020
+101267131
+101267186
+101262356
+101055590
+101263877
+101243886
+101251336
+101259884
+101246424
+101263761
+101251368
+100736444
+101255929
+101247838
+101248026
+novel.667
+100134896
+544197
+101253771
+101260892
+101266548
+101266759
+101264432
+101246087
+543891
+544010
+101261722
+101251195
+101055520
+101258203
+101254270
+101266314
+101257973
+101267632
+101055548
+101249123
+101262488
+101260840
+101245319
+101255309
+544297
+101244245
+101252615
+NA
+NA.1
+NA.2
+NA.3
+NA.4
+NA.5
+NA.6
+NA.7
+NA.8
+NA.9
+NA.10
+NA.11
+NA.12
+NA.13
+NA.14
+NA.15
+NA.16
+NA.17
+NA.18
+NA.19
+NA.20
+NA.21
+NA.22
+NA.23
+NA.24
+NA.25
+NA.26
+NA.27
+​</lt-span></lt-div></lt-div></lt-mirror><slot></slot><link href="chrome-extension://oldceeleldhonbafppcapldpdifcinji/content/styles/shadow.css" rel="stylesheet"></template>
+										<textarea class="span10" id="area2" wrap="off" rows="4" data-gramm="false" wt-ignore-input="true" data-lt-tmp-id="lt-325382" spellcheck="false"></textarea>
+										<a class="btn btn-link" id="clear_2" href="javascript:void(0)">clear</a>
+									</div>
+								</div>
+							</div>
+			 			</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-12">
+			 					 <div class="control-group pink">
+									<input class="span6" id="name3" type="text" style="font-weight: bold;" value="List 3" maxlength="11">
+									<div class="controls controls-row"><template shadowrootmode="closed"><lt-mirror contenteditable="false" style="display: none;"><template shadowrootmode="closed"><lt-highlighter contenteditable="false" style="display: none;"><lt-div spellcheck="false" class="lt-highlighter__wrapper" style="transform: none !important; transform-origin: 86.8px 39.4px !important; zoom: 1 !important; width: 155px !important; height: 77.2px !important; margin-top: 0.8px !important; margin-left: 0.8px !important;"><lt-div class="lt-highlighter__scroll-element" style="top: -15217.6px !important; left: 0px !important; width: 155px !important; height: 15298px !important;"></lt-div></lt-div></lt-highlighter><slot></slot><link href="chrome-extension://oldceeleldhonbafppcapldpdifcinji/content/styles/shadow.css" rel="stylesheet"></template><lt-div spellcheck="false" class="lt-mirror__wrapper notranslate" data-lt-scroll-top="15217.599609375" data-lt-scroll-left="0" data-lt-scroll-top-scaled="15217.599609375" data-lt-scroll-left-scaled="0" data-lt-scroll-top-scaled-and-zoomed="15217.599609375" data-lt-scroll-left-scaled-and-zoomed="0" style="border: 0.8px solid rgb(201, 28, 97) !important; border-radius: 0px !important; direction: ltr !important; font: 400 14px / 1.2 &quot;Open Sans&quot; !important; font-synthesis: weight style small-caps !important; hyphens: manual !important; letter-spacing: normal !important; line-break: auto !important; margin: 0px !important; padding: 5px 4px !important; text-align: start !important; text-decoration: none solid rgb(201, 28, 97) !important; text-indent: 0px !important; text-rendering: auto !important; text-transform: none !important; transform: none !important; transform-origin: 86.8px 39.4px !important; unicode-bidi: normal !important; white-space: pre !important; word-spacing: 0px !important; overflow-wrap: normal !important; writing-mode: horizontal-tb !important; zoom: 1 !important; -webkit-locale: &quot;en&quot; !important; -webkit-rtl-ordering: logical !important; width: 147px !important; height: 67.2px !important;"><lt-div class="lt-mirror__canvas" style="margin-top: -15217.6px !important; margin-left: 0px !important; width: 147px !important; height: 15288px !important;"><lt-span>100316894
+101260164
+101249794
+101265426
+101253759
+101261835
+101262661
+101260084
+101263630
+101250584
+101248026
+101250767
+101253585
+101263441
+101263239
+101255324
+101248778
+101249123
+778336
+543521
+101261529
+101245840
+101257012
+101266879
+101260562
+101268268
+101254960
+101267981
+101248124
+101265728
+543923
+104645665
+101249144
+101254878
+101255191
+101244894
+101254223
+101268294
+544103
+101244006
+101251458
+101268013
+543680
+101259182
+101261722
+778212
+544207
+101250420
+101266883
+100316895
+101251018
+543516
+101257817
+101259925
+544099
+101263158
+101249493
+101244314
+778273
+101250444
+101257269
+101251527
+101268860
+101247345
+101251005
+544109
+101255830
+novel.108
+543691
+101267241
+101245191
+101261619
+novel.667
+543605
+101246087
+101251967
+101268236
+544250
+101253462
+101266537
+101261451
+101265980
+101253771
+101259163
+101266245
+101254509
+101252777
+101252846
+101262633
+101246840
+101248126
+100191126
+101259923
+101268572
+101266792
+101261181
+101257277
+101244582
+543942
+101251456
+778320
+101246280
+101268338
+101251303
+101268548
+101256975
+101259436
+101247196
+101246295
+101247807
+101254880
+101248670
+101255255
+101267023
+101266231
+100037499
+101247462
+101246126
+543806
+104648156
+101263592
+101259007
+101260481
+101246841
+101246326
+101247465
+100736499
+101254991
+101244048
+543824
+101251154
+101267118
+101262162
+101249062
+101266759
+101250189
+101246267
+101262200
+101247719
+101256309
+101255501
+101268780
+101249497
+101247272
+101265663
+101260294
+101263054
+101260459
+101245875
+101246342
+101248434
+101267605
+100301943
+101250763
+101252968
+101267179
+101253566
+101260726
+101244186
+101260320
+101245149
+101246277
+101266355
+101263766
+novel.304
+101247288
+101257561
+101255031
+101266721
+100135703
+109120183
+101256409
+101263696
+101267355
+778249
+101247880
+101247368
+101252505
+101247154
+101250219
+101249712
+101265189
+101256847
+101248461
+101247830
+101249709
+101264464
+101261228
+543731
+112940015
+544313
+101264700
+101258589
+101261634
+101250514
+101245130
+101249721
+101258870
+101262066
+101255654
+101261424
+101254476
+101253953
+101247643
+543614
+101249452
+101248276
+101250515
+101260244
+101257961
+101248467
+101248884
+101246688
+101258285
+101255829
+101259487
+101248635
+101244012
+101260892
+101250270
+101252588
+544264
+108178985
+543944
+101258448
+101259967
+101245462
+101252689
+101259536
+101256208
+100037735
+101263355
+101245282
+101257927
+101245564
+101256176
+101259682
+101252457
+101253982
+101258062
+101244796
+101253874
+101261042
+101253648
+101254270
+101253408
+101264793
+101250024
+101252451
+101250443
+101261040
+543701
+101259548
+101252627
+101250358
+101259871
+101267365
+101248757
+543677
+101254118
+101258346
+101250923
+101257588
+101259371
+101248759
+101261739
+101254911
+101265303
+101267147
+101260554
+101268145
+101245341
+101253265
+101244450
+101267693
+101254785
+101244185
+112941516
+100750252
+101247200
+101262611
+101249973
+101259353
+101248717
+543875
+101255480
+101252613
+102464330
+101253040
+101255509
+101254846
+101258485
+101268894
+101250146
+543839
+101244909
+101266533
+101244623
+101255163
+101247768
+101257377
+101253631
+101247106
+101250658
+101251394
+101258588
+101264048
+101266268
+101258872
+101259911
+101265985
+101255122
+101254787
+101265539
+101246025
+101267347
+101055605
+101249811
+544056
+101248619
+101252966
+101249208
+101265833
+101249625
+112940999
+101257315
+101261342
+101254316
+101267743
+101248932
+101261408
+101261974
+101246202
+101252894
+101249141
+101258376
+101251035
+101266872
+101246727
+778339
+101267093
+101250071
+100750255
+101267829
+101256639
+101248184
+109119361
+101255476
+101262480
+101264678
+101244694
+101253864
+101260234
+101251820
+101264281
+101260997
+101260284
+101244740
+101262581
+100134881
+104645830
+101260970
+101260794
+101247647
+101246543
+101263877
+101245126
+101267646
+101251684
+101243802
+101258509
+101263888
+101250777
+101263710
+101261459
+101253341
+101245290
+101250521
+101264330
+778275
+101257661
+101266924
+101263994
+101260039
+101261639
+100134896
+543880
+543993
+101263123
+101264704
+101257792
+101246982
+101244691
+101244408
+544009
+544033
+101251195
+101258429
+101265590
+101260171
+101244399
+101261434
+101246786
+543928
+544144
+101245945
+101261780
+101258862
+101251641
+104644345
+101247838
+101260946
+101264460
+101255248
+544123
+544157
+101245242
+101245413
+101264300
+101248894
+101256003
+101253445
+544163
+novel.466
+101250974
+778350
+101243975
+104645678
+101259643
+101255705
+101267816
+101256691
+101248067
+101247459
+101267733
+101254920
+101261141
+101258203
+101256625
+101261818
+101251216
+543736
+101263545
+104646748
+101265235
+101259394
+101245896
+101244101
+101260974
+101246177
+101249565
+101266243
+101250624
+100316872
+544142
+101254379
+104644843
+101249706
+101264804
+101248665
+101262614
+101245711
+101244167
+101256151
+101244332
+101251700
+101253282
+101258601
+101248477
+101264731
+101249653
+101247382
+543986
+101264170
+101255348
+544165
+101248063
+101251620
+101251407
+101267632
+101247551
+101256961
+544010
+101246328
+101263892
+101244651
+543526
+101250935
+101246027
+101267987
+543891
+544180
+101255096
+101245634
+101265316
+101255726
+101252563
+109120859
+544031
+101244769
+101261461
+101260838
+104648541
+100037498
+101264681
+101257929
+101253192
+101250721
+101248957
+101258071
+101259417
+101248996
+101255162
+101265657
+101251977
+101245070
+101244426
+101254670
+101254900
+101250009
+101262584
+101256463
+104644439
+101250904
+101254702
+101263533
+101248158
+novel.246
+101264391
+101257337
+101249224
+101252083
+104645741
+543990
+101261854
+101255178
+101254660
+543603
+101268570
+101248335
+101249904
+101259276
+101247427
+101251606
+101247012
+101261140
+101246836
+101266806
+101263903
+101267711
+112940561
+101253418
+101263226
+101261978
+101260888
+101268787
+100037497
+101244843
+101263679
+544052
+101261799
+101260046
+101262681
+543815
+544297
+101265775
+101266582
+101254002
+101268290
+101259884
+101258887
+101254608
+101250708
+101256817
+101268273
+101256765
+101249583
+101250104
+101249070
+101253115
+101247735
+101253750
+101250636
+101245688
+101266118
+101263469
+112940024
+101247825
+101245982
+101256359
+101258773
+101260101
+101267029
+112941581
+101248076
+109120423
+101267530
+101247056
+101268729
+101250999
+101247332
+100736444
+101253845
+101253551
+101268432
+101253598
+101245287
+101258514
+104647238
+101244280
+101262828
+101248057
+101264781
+101260209
+101263872
+101254501
+101260079
+101267225
+101268143
+101246721
+101248614
+101265909
+104645408
+101263370
+101244548
+101245464
+544187
+100316887
+101251301
+101246151
+101250536
+101248108
+101247995
+101246954
+101253025
+101246930
+101246203
+101260132
+101261797
+101246812
+101258155
+101245684
+101257894
+101260339
+101257775
+101245084
+101261024
+101263275
+101253128
+101248144
+101248152
+100736534
+101262236
+101266620
+novel.224
+101265520
+104648424
+101250190
+101257623
+101246008
+101250113
+101261694
+101261904
+101263832
+101267140
+101252097
+101251432
+101250084
+101247082
+101055592
+101249999
+101258980
+101265827
+101265337
+101264331
+101243692
+101262225
+101266611
+101260433
+101252773
+101260346
+101247075
+101261485
+104648246
+101260531
+101265495
+101265172
+101245190
+101258000
+101251639
+101268298
+101264726
+101256522
+101250262
+101249209
+101259661
+101264483
+109118688
+101245497
+101253143
+101256373
+100736451
+101253038
+101252947
+101253579
+novel.447
+101267424
+112941737
+101268459
+101254537
+101263827
+101262567
+101265798
+101249426
+101246357
+101264118
+101263419
+100147720
+101265430
+101263011
+101244758
+102464333
+543855
+101243709
+101255144
+101245454
+101265282
+101251145
+101258009
+101252276
+101256298
+101259229
+543654
+101267468
+101256979
+101255390
+101266119
+101252393
+101258361
+101259504
+101252910
+544290
+112942237
+101258763
+101267695
+novel.56
+101265734
+101247773
+101248835
+101258267
+101256870
+101257330
+101265187
+543517
+101259423
+101267943
+101261772
+101261294
+101245973
+100301928
+101258366
+544134
+101055602
+101243841
+101244637
+100134888
+101254004
+101244827
+101250479
+101265380
+101243671
+101255681
+101263682
+544162
+101254394
+101247018
+101259193
+101255604
+101262668
+100736505
+101244435
+104647150
+101266621
+novel.836
+109119183
+101263334
+543767
+101259942
+101255883
+101248223
+101248294
+101248260
+101250112
+101265496
+101246917
+101265673
+101247976
+101259678
+101257776
+104644300
+101255313
+100316879
+101265262
+101258357
+101055548
+544200
+101262621
+101256055
+101249449
+101251242
+101260072
+101256154
+101268113
+101249045
+101266964
+101246260
+101266639
+104648385
+101249561
+101262765
+101248455
+112941802
+101250467
+543808
+104796547
+101264953
+101260866
+101264204
+101257964
+101267002
+100736524
+101252373
+101250322
+101262640
+101250181
+101247398
+101265719
+101268200
+543529
+544136
+112941375
+100820704
+101263875
+101249694
+101267001
+101249481
+778314
+101262227
+101254178
+101244514
+101246784
+101244060
+101265946
+101254597
+101244142
+101257689
+112940567
+101259926
+101259555
+101252754
+101261383
+101055596
+101268049
+544124
+101251943
+101256620
+101258723
+104646741
+101264093
+100301918
+101245241
+101255038
+101245233
+101254581
+101255369
+101251234
+101257007
+101267703
+101255928
+101259641
+101259649
+101261019
+101255283
+101251614
+101259170
+101267950
+101251098
+101256489
+778364
+101254101
+101264861
+101252257
+101258129
+101055512
+101260626
+101249683
+101258079
+101264574
+101247526
+101248573
+101252813
+101248469
+101254841
+101260175
+101267985
+101253931
+101256209
+101247659
+101263038
+​</lt-span></lt-div></lt-div></lt-mirror><slot></slot><link href="chrome-extension://oldceeleldhonbafppcapldpdifcinji/content/styles/shadow.css" rel="stylesheet"></template>
+										<textarea class="span10" id="area3" wrap="off" rows="4" data-gramm="false" wt-ignore-input="true" data-lt-tmp-id="lt-586818" spellcheck="false"></textarea>
+										<a class="btn btn-link" id="clear_3" href="javascript:void(0)">clear</a>
+									</div>
+			 					</div>
+			 				</div>
+			 			</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-12">
+			 					<div class="control-group yellow">
+									<input class="span6" id="name4" type="text" style="font-weight: bold;" value="List 4" maxlength="11">
+									<div class="controls controls-row">
+										<textarea class="span10" id="area4" wrap="off" rows="4" data-gramm="false" wt-ignore-input="true"></textarea>
+										<a class="btn btn-link" id="clear_4" href="javascript:void(0)">clear</a>
+									</div>
+			 					</div>
+			 				</div>
+			 			</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-12">
+			 					<div class="control-group orange">
+									<input class="span6" id="name5" type="text" style="font-weight: bold;" value="List 5" maxlength="11">
+									<div class="controls controls-row">
+										<textarea class="span10" id="area5" wrap="off" rows="4" data-gramm="false" wt-ignore-input="true"></textarea>
+										<a class="btn btn-link" id="clear_5" href="javascript:void(0)">clear</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		<hr>
+
+	</div>
+	<script>
+     	!function ($) {
+     		$(function(){
+				window.prettyPrint && prettyPrint()
+			})
+		}(window.jQuery)
+	</script>
+				</div> <!-- /.main-content -->
+			</div><!-- /.main-container-inner -->
+
+
+			<a href="https://www.biotools.fr/misc/venny#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="icon-double-angle-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+
+		<div class="text-center">Site and all tools designed and maintained by Andy Saurin <img src="./Venn Diagrams - Genomics Biotools_files/address.png" border="0"></div>
+		<div class="text-center">&nbsp;</div>
+
+
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-64090026-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+
+	
+<style>.number-black{font-weight:bold;color:#000000;cursor:default;text-decoration:none;font-size:12px;}.small-number{font-weight:bold;color:#FFFFFF;cursor:default;text-decoration:none;font-size:12px;}.number-over{font-weight:bold;color:#0000FF;text-decoration:underline;}.number-empty{font-weight:normal;font-size:12px;}</style><div></div><div id="compose-ai-general-snackbar-root"></div><div id="Chat-Plugin-Root" class="compose-root-component"></div><div id="yt_article_summary_widget_wrapper" class="yt_article_summary_widget_wrapper" style="display: none;">
+        <div id="yt_article_summary_widget" class="yt_article_summary_widget"><svg style="filter: brightness(0.8);" width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="path-1-outside-1_3606_3145" maskUnits="userSpaceOnUse" x="1" y="1" width="22" height="22" fill="black">
+                <rect fill="white" x="1" y="1" width="22" height="22"></rect>
+                <path d="M20.6816 10.1843C20.9588 9.34066 21.0063 8.4399 20.8192 7.57245C20.6321 6.70499 20.217 5.90134 19.6157 5.24216C19.0143 4.58298 18.2478 4.09146 17.393 3.81692C16.5382 3.54238 15.6253 3.49449 14.7459 3.67805C14.1453 3.01747 13.379 2.52468 12.524 2.24931C11.669 1.97394 10.7555 1.92571 9.87559 2.10947C8.99568 2.29324 8.18039 2.70252 7.51181 3.29608C6.84323 3.88965 6.34499 4.64654 6.06725 5.49055C5.18642 5.67292 4.3699 6.08122 3.70003 6.67426C3.03017 7.26731 2.53064 8.02413 2.25182 8.86842C1.97299 9.71271 1.92474 10.6146 2.11192 11.4832C2.2991 12.3517 2.71509 13.1562 3.31795 13.8155C3.09309 14.4899 3.01633 15.2037 3.09278 15.9095C3.16924 16.6154 3.39716 17.2971 3.76139 17.9093C4.30169 18.8351 5.12567 19.568 6.11483 20.0027C7.104 20.4373 8.20738 20.5512 9.26631 20.328C9.74353 20.8568 10.3291 21.2796 10.9844 21.5684C11.6396 21.8571 12.3495 22.0053 13.0672 22.003C14.1516 22.003 15.2081 21.6635 16.0847 21.0334C16.9612 20.4034 17.6125 19.5152 17.9449 18.4968C18.649 18.3539 19.3141 18.0649 19.8962 17.6489C20.4784 17.233 20.9642 16.6997 21.3214 16.0843C21.8585 15.1598 22.0858 14.0915 21.9709 13.032C21.856 11.9724 21.4048 10.9758 20.6816 10.1843ZM13.0798 20.6968C12.191 20.6968 11.3302 20.3894 10.6473 19.828L10.7677 19.7593L14.8029 17.4593C14.9069 17.4047 14.9935 17.3225 15.0528 17.2221C15.1121 17.1216 15.1418 17.0068 15.1386 16.8905V11.2655L16.8427 12.2405C16.8517 12.2441 16.8594 12.2501 16.865 12.2579C16.8706 12.2656 16.8739 12.2748 16.8744 12.2843V16.9343C16.876 17.4289 16.7785 17.9189 16.5875 18.3761C16.3964 18.8333 16.1156 19.2488 15.7611 19.5985C15.4067 19.9482 14.9856 20.2253 14.5222 20.4138C14.0588 20.6023 13.5621 20.6984 13.0608 20.6968H13.0798ZM4.90165 17.2593C4.46164 16.5029 4.3026 15.6189 4.45188 14.7593L4.57224 14.828L8.60749 17.128C8.70379 17.1829 8.81303 17.2118 8.92423 17.2118C9.03543 17.2118 9.14467 17.1829 9.24097 17.128L14.1758 14.3218V16.253C14.1797 16.2608 14.1817 16.2694 14.1817 16.278C14.1817 16.2867 14.1797 16.2953 14.1758 16.303L10.0962 18.628C9.66403 18.8748 9.18685 19.0352 8.69188 19.0999C8.19692 19.1647 7.69387 19.1326 7.21148 19.0055C6.72909 18.8784 6.27681 18.6587 5.88048 18.3591C5.48415 18.0595 5.15154 17.6858 4.90165 17.2593ZM3.83741 8.5843C4.28764 7.82089 4.99655 7.23878 5.83919 6.94055V11.6718C5.83595 11.7857 5.86434 11.8983 5.92128 11.9975C5.97823 12.0966 6.06156 12.1785 6.16227 12.2343L11.0717 15.028L9.36766 16.003C9.34918 16.0092 9.32914 16.0092 9.31065 16.003L5.23106 13.678C4.36041 13.1812 3.72487 12.3642 3.46364 11.4059C3.20242 10.4476 3.33682 9.42624 3.83741 8.56555V8.5843ZM17.8563 11.7968L12.9278 8.9718L14.6319 8.00305C14.6403 7.99741 14.6502 7.99439 14.6604 7.99439C14.6705 7.99439 14.6805 7.99741 14.6889 8.00305L18.7685 10.328C19.3915 10.684 19.8992 11.2072 20.2325 11.8368C20.5659 12.4664 20.7111 13.1764 20.6514 13.8843C20.5916 14.5921 20.3294 15.2687 19.8951 15.8352C19.4608 16.4017 18.8724 16.8349 18.1983 17.0843V12.353C18.1946 12.2391 18.1612 12.1281 18.1013 12.0306C18.0414 11.9332 17.957 11.8527 17.8563 11.7968ZM19.554 9.2968L19.4336 9.2218L15.4047 6.9093C15.3047 6.84846 15.1896 6.81624 15.0721 6.81624C14.9547 6.81624 14.8395 6.84846 14.7396 6.9093L9.8111 9.71555V7.75305C9.8061 7.7445 9.80346 7.7348 9.80346 7.72492C9.80346 7.71505 9.8061 7.70535 9.8111 7.6968L13.897 5.37805C14.5222 5.02257 15.2371 4.85003 15.958 4.88059C16.6789 4.91115 17.3762 5.14356 17.9682 5.55064C18.5601 5.95772 19.0225 6.52265 19.301 7.17939C19.5796 7.83614 19.663 8.55755 19.5413 9.2593L19.554 9.2968ZM8.87989 12.7218L7.1695 11.753C7.15339 11.7405 7.1422 11.7228 7.13782 11.703V7.06555C7.13785 6.35289 7.34371 5.65499 7.73128 5.0536C8.11885 4.45222 8.67209 3.97224 9.32619 3.6699C9.98029 3.36756 10.7082 3.25537 11.4246 3.34647C12.141 3.43757 12.8162 3.7282 13.3712 4.1843L13.2636 4.25305L9.21563 6.55305C9.11158 6.60765 9.02504 6.68981 8.96573 6.79029C8.90642 6.89076 8.87669 7.00557 8.87989 7.1218V12.7218ZM9.80476 10.753L11.9966 9.50305L14.1948 10.753V13.253L11.9966 14.503L9.79843 13.253L9.80476 10.753Z"></path>
+                </mask>
+                <path d="M20.6816 10.1843C20.9588 9.34066 21.0063 8.4399 20.8192 7.57245C20.6321 6.70499 20.217 5.90134 19.6157 5.24216C19.0143 4.58298 18.2478 4.09146 17.393 3.81692C16.5382 3.54238 15.6253 3.49449 14.7459 3.67805C14.1453 3.01747 13.379 2.52468 12.524 2.24931C11.669 1.97394 10.7555 1.92571 9.87559 2.10947C8.99568 2.29324 8.18039 2.70252 7.51181 3.29608C6.84323 3.88965 6.34499 4.64654 6.06725 5.49055C5.18642 5.67292 4.3699 6.08122 3.70003 6.67426C3.03017 7.26731 2.53064 8.02413 2.25182 8.86842C1.97299 9.71271 1.92474 10.6146 2.11192 11.4832C2.2991 12.3517 2.71509 13.1562 3.31795 13.8155C3.09309 14.4899 3.01633 15.2037 3.09278 15.9095C3.16924 16.6154 3.39716 17.2971 3.76139 17.9093C4.30169 18.8351 5.12567 19.568 6.11483 20.0027C7.104 20.4373 8.20738 20.5512 9.26631 20.328C9.74353 20.8568 10.3291 21.2796 10.9844 21.5684C11.6396 21.8571 12.3495 22.0053 13.0672 22.003C14.1516 22.003 15.2081 21.6635 16.0847 21.0334C16.9612 20.4034 17.6125 19.5152 17.9449 18.4968C18.649 18.3539 19.3141 18.0649 19.8962 17.6489C20.4784 17.233 20.9642 16.6997 21.3214 16.0843C21.8585 15.1598 22.0858 14.0915 21.9709 13.032C21.856 11.9724 21.4048 10.9758 20.6816 10.1843ZM13.0798 20.6968C12.191 20.6968 11.3302 20.3894 10.6473 19.828L10.7677 19.7593L14.8029 17.4593C14.9069 17.4047 14.9935 17.3225 15.0528 17.2221C15.1121 17.1216 15.1418 17.0068 15.1386 16.8905V11.2655L16.8427 12.2405C16.8517 12.2441 16.8594 12.2501 16.865 12.2579C16.8706 12.2656 16.8739 12.2748 16.8744 12.2843V16.9343C16.876 17.4289 16.7785 17.9189 16.5875 18.3761C16.3964 18.8333 16.1156 19.2488 15.7611 19.5985C15.4067 19.9482 14.9856 20.2253 14.5222 20.4138C14.0588 20.6023 13.5621 20.6984 13.0608 20.6968H13.0798ZM4.90165 17.2593C4.46164 16.5029 4.3026 15.6189 4.45188 14.7593L4.57224 14.828L8.60749 17.128C8.70379 17.1829 8.81303 17.2118 8.92423 17.2118C9.03543 17.2118 9.14467 17.1829 9.24097 17.128L14.1758 14.3218V16.253C14.1797 16.2608 14.1817 16.2694 14.1817 16.278C14.1817 16.2867 14.1797 16.2953 14.1758 16.303L10.0962 18.628C9.66403 18.8748 9.18685 19.0352 8.69188 19.0999C8.19692 19.1647 7.69387 19.1326 7.21148 19.0055C6.72909 18.8784 6.27681 18.6587 5.88048 18.3591C5.48415 18.0595 5.15154 17.6858 4.90165 17.2593ZM3.83741 8.5843C4.28764 7.82089 4.99655 7.23878 5.83919 6.94055V11.6718C5.83595 11.7857 5.86434 11.8983 5.92128 11.9975C5.97823 12.0966 6.06156 12.1785 6.16227 12.2343L11.0717 15.028L9.36766 16.003C9.34918 16.0092 9.32914 16.0092 9.31065 16.003L5.23106 13.678C4.36041 13.1812 3.72487 12.3642 3.46364 11.4059C3.20242 10.4476 3.33682 9.42624 3.83741 8.56555V8.5843ZM17.8563 11.7968L12.9278 8.9718L14.6319 8.00305C14.6403 7.99741 14.6502 7.99439 14.6604 7.99439C14.6705 7.99439 14.6805 7.99741 14.6889 8.00305L18.7685 10.328C19.3915 10.684 19.8992 11.2072 20.2325 11.8368C20.5659 12.4664 20.7111 13.1764 20.6514 13.8843C20.5916 14.5921 20.3294 15.2687 19.8951 15.8352C19.4608 16.4017 18.8724 16.8349 18.1983 17.0843V12.353C18.1946 12.2391 18.1612 12.1281 18.1013 12.0306C18.0414 11.9332 17.957 11.8527 17.8563 11.7968ZM19.554 9.2968L19.4336 9.2218L15.4047 6.9093C15.3047 6.84846 15.1896 6.81624 15.0721 6.81624C14.9547 6.81624 14.8395 6.84846 14.7396 6.9093L9.8111 9.71555V7.75305C9.8061 7.7445 9.80346 7.7348 9.80346 7.72492C9.80346 7.71505 9.8061 7.70535 9.8111 7.6968L13.897 5.37805C14.5222 5.02257 15.2371 4.85003 15.958 4.88059C16.6789 4.91115 17.3762 5.14356 17.9682 5.55064C18.5601 5.95772 19.0225 6.52265 19.301 7.17939C19.5796 7.83614 19.663 8.55755 19.5413 9.2593L19.554 9.2968ZM8.87989 12.7218L7.1695 11.753C7.15339 11.7405 7.1422 11.7228 7.13782 11.703V7.06555C7.13785 6.35289 7.34371 5.65499 7.73128 5.0536C8.11885 4.45222 8.67209 3.97224 9.32619 3.6699C9.98029 3.36756 10.7082 3.25537 11.4246 3.34647C12.141 3.43757 12.8162 3.7282 13.3712 4.1843L13.2636 4.25305L9.21563 6.55305C9.11158 6.60765 9.02504 6.68981 8.96573 6.79029C8.90642 6.89076 8.87669 7.00557 8.87989 7.1218V12.7218ZM9.80476 10.753L11.9966 9.50305L14.1948 10.753V13.253L11.9966 14.503L9.79843 13.253L9.80476 10.753Z" fill="#828282"></path>
+                <path d="M20.6816 10.1843C20.9588 9.34066 21.0063 8.4399 20.8192 7.57245C20.6321 6.70499 20.217 5.90134 19.6157 5.24216C19.0143 4.58298 18.2478 4.09146 17.393 3.81692C16.5382 3.54238 15.6253 3.49449 14.7459 3.67805C14.1453 3.01747 13.379 2.52468 12.524 2.24931C11.669 1.97394 10.7555 1.92571 9.87559 2.10947C8.99568 2.29324 8.18039 2.70252 7.51181 3.29608C6.84323 3.88965 6.34499 4.64654 6.06725 5.49055C5.18642 5.67292 4.3699 6.08122 3.70003 6.67426C3.03017 7.26731 2.53064 8.02413 2.25182 8.86842C1.97299 9.71271 1.92474 10.6146 2.11192 11.4832C2.2991 12.3517 2.71509 13.1562 3.31795 13.8155C3.09309 14.4899 3.01633 15.2037 3.09278 15.9095C3.16924 16.6154 3.39716 17.2971 3.76139 17.9093C4.30169 18.8351 5.12567 19.568 6.11483 20.0027C7.104 20.4373 8.20738 20.5512 9.26631 20.328C9.74353 20.8568 10.3291 21.2796 10.9844 21.5684C11.6396 21.8571 12.3495 22.0053 13.0672 22.003C14.1516 22.003 15.2081 21.6635 16.0847 21.0334C16.9612 20.4034 17.6125 19.5152 17.9449 18.4968C18.649 18.3539 19.3141 18.0649 19.8962 17.6489C20.4784 17.233 20.9642 16.6997 21.3214 16.0843C21.8585 15.1598 22.0858 14.0915 21.9709 13.032C21.856 11.9724 21.4048 10.9758 20.6816 10.1843ZM13.0798 20.6968C12.191 20.6968 11.3302 20.3894 10.6473 19.828L10.7677 19.7593L14.8029 17.4593C14.9069 17.4047 14.9935 17.3225 15.0528 17.2221C15.1121 17.1216 15.1418 17.0068 15.1386 16.8905V11.2655L16.8427 12.2405C16.8517 12.2441 16.8594 12.2501 16.865 12.2579C16.8706 12.2656 16.8739 12.2748 16.8744 12.2843V16.9343C16.876 17.4289 16.7785 17.9189 16.5875 18.3761C16.3964 18.8333 16.1156 19.2488 15.7611 19.5985C15.4067 19.9482 14.9856 20.2253 14.5222 20.4138C14.0588 20.6023 13.5621 20.6984 13.0608 20.6968H13.0798ZM4.90165 17.2593C4.46164 16.5029 4.3026 15.6189 4.45188 14.7593L4.57224 14.828L8.60749 17.128C8.70379 17.1829 8.81303 17.2118 8.92423 17.2118C9.03543 17.2118 9.14467 17.1829 9.24097 17.128L14.1758 14.3218V16.253C14.1797 16.2608 14.1817 16.2694 14.1817 16.278C14.1817 16.2867 14.1797 16.2953 14.1758 16.303L10.0962 18.628C9.66403 18.8748 9.18685 19.0352 8.69188 19.0999C8.19692 19.1647 7.69387 19.1326 7.21148 19.0055C6.72909 18.8784 6.27681 18.6587 5.88048 18.3591C5.48415 18.0595 5.15154 17.6858 4.90165 17.2593ZM3.83741 8.5843C4.28764 7.82089 4.99655 7.23878 5.83919 6.94055V11.6718C5.83595 11.7857 5.86434 11.8983 5.92128 11.9975C5.97823 12.0966 6.06156 12.1785 6.16227 12.2343L11.0717 15.028L9.36766 16.003C9.34918 16.0092 9.32914 16.0092 9.31065 16.003L5.23106 13.678C4.36041 13.1812 3.72487 12.3642 3.46364 11.4059C3.20242 10.4476 3.33682 9.42624 3.83741 8.56555V8.5843ZM17.8563 11.7968L12.9278 8.9718L14.6319 8.00305C14.6403 7.99741 14.6502 7.99439 14.6604 7.99439C14.6705 7.99439 14.6805 7.99741 14.6889 8.00305L18.7685 10.328C19.3915 10.684 19.8992 11.2072 20.2325 11.8368C20.5659 12.4664 20.7111 13.1764 20.6514 13.8843C20.5916 14.5921 20.3294 15.2687 19.8951 15.8352C19.4608 16.4017 18.8724 16.8349 18.1983 17.0843V12.353C18.1946 12.2391 18.1612 12.1281 18.1013 12.0306C18.0414 11.9332 17.957 11.8527 17.8563 11.7968ZM19.554 9.2968L19.4336 9.2218L15.4047 6.9093C15.3047 6.84846 15.1896 6.81624 15.0721 6.81624C14.9547 6.81624 14.8395 6.84846 14.7396 6.9093L9.8111 9.71555V7.75305C9.8061 7.7445 9.80346 7.7348 9.80346 7.72492C9.80346 7.71505 9.8061 7.70535 9.8111 7.6968L13.897 5.37805C14.5222 5.02257 15.2371 4.85003 15.958 4.88059C16.6789 4.91115 17.3762 5.14356 17.9682 5.55064C18.5601 5.95772 19.0225 6.52265 19.301 7.17939C19.5796 7.83614 19.663 8.55755 19.5413 9.2593L19.554 9.2968ZM8.87989 12.7218L7.1695 11.753C7.15339 11.7405 7.1422 11.7228 7.13782 11.703V7.06555C7.13785 6.35289 7.34371 5.65499 7.73128 5.0536C8.11885 4.45222 8.67209 3.97224 9.32619 3.6699C9.98029 3.36756 10.7082 3.25537 11.4246 3.34647C12.141 3.43757 12.8162 3.7282 13.3712 4.1843L13.2636 4.25305L9.21563 6.55305C9.11158 6.60765 9.02504 6.68981 8.96573 6.79029C8.90642 6.89076 8.87669 7.00557 8.87989 7.1218V12.7218ZM9.80476 10.753L11.9966 9.50305L14.1948 10.753V13.253L11.9966 14.503L9.79843 13.253L9.80476 10.753Z" stroke="#828282" stroke-width="0.2" mask="url(#path-1-outside-1_3606_3145)"></path>
+            </svg></div>
+        <div id="yt_article_summary_close_button" class="yt_article_summary_close_button">×</div>
+    </div><lt-toolbar contenteditable="false" data-lt-adjust-appearance="true" data-lt-force-appearance="light" style="display: none;"><lt-div class="lt-toolbar__wrapper lt-toolbar__wrapper--hide" style="left: 1138px; position: absolute !important; top: 228px !important; bottom: auto !important; z-index: auto;"><lt-div class="lt-toolbar__extras"><lt-span class="lt-toolbar__disable-icon"><lt-comp-icon class="lt-icon--disable lt-icon--clickable" data-lt-prevent-focus="true"><lt-span class="lt-icon__icon lt-icon__disable"></lt-span></lt-comp-icon></lt-span><lt-div class="lt-toolbar__divider"></lt-div><lt-div class="lt-toolbar__premium-icon"></lt-div><lt-span class="lt-toolbar__rephrasing-icon lt-toolbar__rephrasing-icon--disabled"><lt-comp-icon class="lt-icon--rephrasing lt-icon--clickable" data-lt-prevent-focus="true"><lt-span class="lt-icon__icon lt-icon__rephrasing"></lt-span></lt-comp-icon></lt-span><lt-span class="lt-toolbar__rephrasing-icon lt-toolbar__rephrasing-icon--disabled lt-toolbar__rephrasing-icon--hidden"><lt-comp-icon class="lt-icon--rephrasing lt-icon--clickable" data-lt-prevent-focus="true"><lt-span class="lt-icon__icon lt-icon__rephrasing"></lt-span></lt-comp-icon></lt-span></lt-div><lt-div class="lt-toolbar__status-icon lt-toolbar__status-icon--text-too-long" title="Sorry, this text is too long to be checked."></lt-div><lt-div class="lt-toolbar__premium-icon-dot"></lt-div></lt-div></lt-toolbar><style>.number-black{font-weight:bold;color:#000000;cursor:default;text-decoration:none;font-size:12px;}.small-number{font-weight:bold;color:#FFFFFF;cursor:default;text-decoration:none;font-size:12px;}.number-over{font-weight:bold;color:#0000FF;text-decoration:underline;}.number-empty{font-weight:normal;font-size:12px;}</style><style>.number-black{font-weight:bold;color:#000000;cursor:default;text-decoration:none;font-size:12px;}.small-number{font-weight:bold;color:#FFFFFF;cursor:default;text-decoration:none;font-size:12px;}.number-over{font-weight:bold;color:#0000FF;text-decoration:underline;}.number-empty{font-weight:normal;font-size:12px;}</style><lt-toolbar contenteditable="false" data-lt-adjust-appearance="true" data-lt-force-appearance="light" style="display: none;"><lt-div class="lt-toolbar__wrapper lt-toolbar__wrapper--hide" style="left: 1138px; position: absolute !important; top: 366px !important; bottom: auto !important; z-index: auto;"><lt-div class="lt-toolbar__extras"><lt-span class="lt-toolbar__disable-icon"><lt-comp-icon class="lt-icon--disable lt-icon--clickable" data-lt-prevent-focus="true"><lt-span class="lt-icon__icon lt-icon__disable"></lt-span></lt-comp-icon></lt-span><lt-div class="lt-toolbar__divider"></lt-div><lt-div class="lt-toolbar__premium-icon"></lt-div><lt-span class="lt-toolbar__rephrasing-icon"><lt-comp-icon class="lt-icon--rephrasing lt-icon--clickable" data-lt-prevent-focus="true"><lt-span class="lt-icon__icon lt-icon__rephrasing"></lt-span></lt-comp-icon></lt-span><lt-span class="lt-toolbar__rephrasing-icon lt-toolbar__rephrasing-icon--disabled lt-toolbar__rephrasing-icon--hidden"><lt-comp-icon class="lt-icon--rephrasing lt-icon--clickable" data-lt-prevent-focus="true"><lt-span class="lt-icon__icon lt-icon__rephrasing"></lt-span></lt-comp-icon></lt-span></lt-div><lt-div class="lt-toolbar__status-icon lt-toolbar__status-icon--has-no-errors" title=""></lt-div><lt-div class="lt-toolbar__premium-icon-dot"></lt-div></lt-div></lt-toolbar><style>.number-black{font-weight:bold;color:#000000;cursor:default;text-decoration:none;font-size:12px;}.small-number{font-weight:bold;color:#FFFFFF;cursor:default;text-decoration:none;font-size:12px;}.number-over{font-weight:bold;color:#0000FF;text-decoration:underline;}.number-empty{font-weight:normal;font-size:12px;}</style><style>.number-black{font-weight:bold;color:#000000;cursor:default;text-decoration:none;font-size:12px;}.small-number{font-weight:bold;color:#FFFFFF;cursor:default;text-decoration:none;font-size:12px;}.number-over{font-weight:bold;color:#0000FF;text-decoration:underline;}.number-empty{font-weight:normal;font-size:12px;}</style><lt-toolbar contenteditable="false" data-lt-adjust-appearance="true" data-lt-force-appearance="light" style="display: none;"><lt-div class="lt-toolbar__wrapper lt-toolbar__wrapper--hide" style="left: 1138px; position: absolute !important; top: 503px !important; bottom: auto !important; z-index: auto;"><lt-div class="lt-toolbar__extras"><lt-span class="lt-toolbar__disable-icon"><lt-comp-icon class="lt-icon--disable lt-icon--clickable" data-lt-prevent-focus="true"><lt-span class="lt-icon__icon lt-icon__disable"></lt-span></lt-comp-icon></lt-span><lt-div class="lt-toolbar__divider"></lt-div><lt-div class="lt-toolbar__premium-icon"></lt-div><lt-span class="lt-toolbar__rephrasing-icon"><lt-comp-icon class="lt-icon--rephrasing lt-icon--clickable" data-lt-prevent-focus="true"><lt-span class="lt-icon__icon lt-icon__rephrasing"></lt-span></lt-comp-icon></lt-span><lt-span class="lt-toolbar__rephrasing-icon lt-toolbar__rephrasing-icon--disabled lt-toolbar__rephrasing-icon--hidden"><lt-comp-icon class="lt-icon--rephrasing lt-icon--clickable" data-lt-prevent-focus="true"><lt-span class="lt-icon__icon lt-icon__rephrasing"></lt-span></lt-comp-icon></lt-span></lt-div><lt-div class="lt-toolbar__status-icon lt-toolbar__status-icon--has-no-errors" title=""></lt-div><lt-div class="lt-toolbar__premium-icon-dot"></lt-div></lt-div></lt-toolbar><style>.number-black{font-weight:bold;color:#000000;cursor:default;text-decoration:none;font-size:12px;}.small-number{font-weight:bold;color:#FFFFFF;cursor:default;text-decoration:none;font-size:12px;}.number-over{font-weight:bold;color:#0000FF;text-decoration:underline;}.number-empty{font-weight:normal;font-size:12px;}</style><div id="InlineText-Plugin-Root" class="compose-root-component"><div class="compose-root-component"></div></div><div id="intellisense-root"></div><style>.number-black{font-weight:bold;color:#000000;cursor:default;text-decoration:none;font-size:12px;}.small-number{font-weight:bold;color:#FFFFFF;cursor:default;text-decoration:none;font-size:12px;}.number-over{font-weight:bold;color:#0000FF;text-decoration:underline;}.number-empty{font-weight:normal;font-size:12px;}</style></body><quillbot-extension-portal style="display: initial; visibility: initial; opacity: initial; clip-path: initial;"><template shadowrootmode="open"><div></div></template></quillbot-extension-portal><quillbot-extension-root style="display: initial; visibility: initial; opacity: initial; clip-path: initial;"><template shadowrootmode="open" shadowrootdelegatesfocus><div id="qb-ext-sr"><div style="display: none;"><button class="MuiButton-root MuiButton-primary MuiButton-primaryPrimary MuiButton-sizeSmall MuiButton-primarySizeSmall MuiButtonBase-root extn-css-1mbubfb" tabindex="0" type="button" appearance="brand"><span class="MuiTouchRipple-root extn-css-w0pj6f"></span></button></div><style data-styled="active" data-styled-version="5.3.5">*,::before,::after{box-sizing:border-box;border-width:0;border-style:solid;--tw-border-opacity:1;border-color:rgba(229,231,235,var(--tw-border-opacity));--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-transform:translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-blur:var(--tw-empty,/*!*/ /*!*/);--tw-brightness:var(--tw-empty,/*!*/ /*!*/);--tw-contrast:var(--tw-empty,/*!*/ /*!*/);--tw-grayscale:var(--tw-empty,/*!*/ /*!*/);--tw-hue-rotate:var(--tw-empty,/*!*/ /*!*/);--tw-invert:var(--tw-empty,/*!*/ /*!*/);--tw-saturate:var(--tw-empty,/*!*/ /*!*/);--tw-sepia:var(--tw-empty,/*!*/ /*!*/);--tw-drop-shadow:var(--tw-empty,/*!*/ /*!*/);--tw-filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);--tw-backdrop-blur:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-brightness:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-contrast:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-grayscale:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-hue-rotate:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-invert:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-opacity:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-saturate:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-sepia:var(--tw-empty,/*!*/ /*!*/);--tw-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";}body{margin:0;font-family:inherit;line-height:inherit;}hr{height:0;color:inherit;border-top-width:1px;}abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;}b,strong{font-weight:bolder;}code,kbd,samp,pre{font-family:ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',Menlo,monospace;font-size:1em;}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sub{bottom:-0.25em;}sup{top:-0.5em;}table{text-indent:0;border-color:inherit;border-collapse:collapse;}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:inherit;margin:0;padding:0;color:inherit;}button,select{text-transform:none;}button,[type='button'],[type='reset'],[type='submit']{-webkit-appearance:button;}::-moz-focus-inner{border-style:none;padding:0;}:-moz-focusring{outline:1px dotted ButtonText;}:-moz-ui-invalid{box-shadow:none;}legend{padding:0;}progress{vertical-align:baseline;}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto;}[type='search']{-webkit-appearance:textfield;outline-offset:-2px;}::-webkit-search-decoration{-webkit-appearance:none;}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit;}summary{display:list-item;}blockquote,dl,dd,h1,h2,h3,h4,h5,h6,hr,figure,p,pre{margin:0;}button{background-color:transparent;background-image:none;}fieldset{margin:0;padding:0;}ol,ul{list-style:none;margin:0;padding:0;}img{border-style:solid;}textarea{resize:vertical;}input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#9ca3af;}input::-moz-placeholder,textarea::-moz-placeholder{color:#9ca3af;}input:-ms-input-placeholder,textarea:-ms-input-placeholder{color:#9ca3af;}input::placeholder,textarea::placeholder{color:#9ca3af;}button,[role="button"]{cursor:pointer;}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;}a{color:inherit;-webkit-text-decoration:inherit;text-decoration:inherit;}pre,code,kbd,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}img,svg,video,canvas,audio,iframe,embed,object{display:block;vertical-align:middle;}img,video{max-width:100%;height:auto;}[hidden]{display:none;}@-webkit-keyframes spin{to{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@keyframes spin{to{-webkit-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}@-webkit-keyframes ping{75%,100%{-webkit-transform:scale(2);-ms-transform:scale(2);transform:scale(2);opacity:0;}}@keyframes ping{75%,100%{-webkit-transform:scale(2);-ms-transform:scale(2);transform:scale(2);opacity:0;}}@-webkit-keyframes pulse{50%{opacity:.5;}}@keyframes pulse{50%{opacity:.5;}}@-webkit-keyframes bounce{0%,100%{-webkit-transform:translateY(-25%);-ms-transform:translateY(-25%);transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(0.8,0,1,1);animation-timing-function:cubic-bezier(0.8,0,1,1);}50%{-webkit-transform:none;-ms-transform:none;transform:none;-webkit-animation-timing-function:cubic-bezier(0,0,0.2,1);animation-timing-function:cubic-bezier(0,0,0.2,1);}}@keyframes bounce{0%,100%{-webkit-transform:translateY(-25%);-ms-transform:translateY(-25%);transform:translateY(-25%);-webkit-animation-timing-function:cubic-bezier(0.8,0,1,1);animation-timing-function:cubic-bezier(0.8,0,1,1);}50%{-webkit-transform:none;-ms-transform:none;transform:none;-webkit-animation-timing-function:cubic-bezier(0,0,0.2,1);animation-timing-function:cubic-bezier(0,0,0.2,1);}}</style></div><style id="common-css">[contenteditable]:focus {
+  outline: 0px solid transparent;
+}
+
+:root {
+  --new: #499557;
+  --new-hover: #41894e;
+  --new-secondary: #71b657;
+  --new-filter: saturate(150%) hue-rotate(25deg) brightness(92%);
+  --new-filter-hover: brightness(90%);
+  --new-banner: #6aab76;
+  --new-banner-hover: #65986f;
+
+  --traditional-filter: none;
+  --traditional-filter-hover: none;
+  --traditional-secondary: #8aad67;
+  --traditional: #849e63;
+  --traditional-hover: #687b50;
+  --traditional-banner: #99b576;
+  --traditional-banner-hover: #799655;
+
+  --primary: var(--new);
+  --secondary: var(--new-secondary);
+  --primary-hover: var(--new-hover);
+  --image-filter: var(--new-filter);
+  --image-filter-hover: var(--new-filter-hover);
+  --banner: var(--new-banner);
+  --banner-hover: var(--new-banner-hover);
+
+  --default-font: Lato, sans-serif;
+}
+
+body {
+  background: #fff;
+  justify-content: center;
+  text-rendering: optimizelegibility;
+  margin: 0 !important;
+}
+
+.mobile-quill-bottom-controls > div {
+  min-width: 48px;
+}
+
+textarea {
+  resize: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* .title {
+  width: 500px;
+  font-size: 1.5rem;
+  display: inline-block;
+} */
+
+.btn {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: all 0.3s;
+}
+
+/* hide google re-captcha */
+
+.go-premium-btn {
+  width: 150px;
+  text-align: center;
+  padding: 4px 20px !important;
+  margin: auto;
+  font-weight: bold !important;
+  color: #fff;
+  cursor: pointer;
+}
+
+.no-box-shadow {
+  box-shadow: none !important;
+}
+
+.login-offer-text {
+  margin: -2px 2px;
+}
+
+.green-text {
+  transition: all 0.15s;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.green-text:hover {
+  color: var(--primary-hover);
+}
+
+.word-prompt-items {
+  display: flex;
+}
+
+.article-sentence {
+  display: inline;
+  -webkit-transition: all 0.15s;
+  -moz-transition: all 0.15s;
+  -o-transition: all 0.15s;
+  -ms-transition: all 0.15s;
+  transition: all 0.15s;
+  /* padding: 4.5px 0px; */
+}
+
+.similarity-score {
+  color: black;
+  font-size: 0.65em;
+  margin-left: 5px;
+}
+
+.error-message {
+  color: #ee1212;
+  font-family: Lato, serif;
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 18px;
+  width: 100%;
+  display: block;
+}
+
+.success-message {
+  color: #00ff00;
+  font-family: Lato, serif;
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 18px;
+}
+
+.color-scale {
+  width: 100%;
+  height: 12px;
+  display: flex;
+  justify-content: space-around;
+  padding: 2px;
+  margin-top: 6px;
+  margin-left: -1px;
+}
+
+.color-button {
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid #737373;
+  margin-top: -2px;
+  margin: 8px 8px;
+  transition: all 0.1s;
+}
+
+.color-button-inside {
+  width: 8px;
+  height: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.1s;
+  margin-top: -2px;
+  margin: 2px 2px;
+}
+
+.article-color-button {
+  background-color: #f8f8f8;
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid #737373;
+  margin-top: -2px;
+  margin: 3px 4px;
+  transition: all 0.1s;
+}
+
+.article-color-button-inside {
+  background-color: #f8f8f8;
+  width: 8px;
+  height: 8px;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: -2px;
+  margin: 1px 1px;
+  transition: all 0.1s;
+}
+
+.recaptcha-container {
+  position: absolute;
+}
+
+#example1 {
+  transition: all 0.1s;
+}
+
+.processing-payment {
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  margin-top: 0;
+  margin-left: 0;
+  text-align: center;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.my-tooltip {
+  line-height: 20px;
+  font-size: 0.9em;
+  width: 210px;
+  text-align: center;
+  transition: all 0s;
+  z-index: 9000000;
+}
+
+.my-tooltip > h6 {
+  line-height: 0px;
+  margin-top: 18px;
+  font-size: 0.9em;
+  margin-bottom: 18px;
+  filter: brightness(100);
+  text-align: center;
+  transition: all 0s;
+}
+
+.p-lock {
+  margin-left: 1px;
+  width: 14px;
+  height: 14px;
+  opacity: 0.69;
+}
+
+.ap-lock {
+  width: 12px;
+  height: 12px;
+  opacity: 0.69;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.strength-list {
+  display: flex;
+  margin-top: 6px;
+  flex-direction: column;
+  margin-left: 4px;
+}
+
+.strength-list-row {
+  display: flex;
+  cursor: pointer;
+}
+
+.strength-tag {
+  color: rgb(86, 86, 86);
+  font-size: 0.8em;
+  line-height: 33px;
+  font-weight: bold;
+}
+
+.priority-divider {
+  border-top: 1px solid rgb(153, 153, 153);
+  width: 70%;
+  margin-left: 5%;
+  margin-top: 7px;
+  margin-bottom: 3px;
+  margin-left: 12%;
+  margin-right: auto;
+}
+
+.credit-cards {
+  margin-right: 0px;
+  cursor: pointer;
+}
+
+.credit-cards img {
+  padding-right: 5px;
+}
+
+.paypal-logo-click {
+  cursor: pointer;
+}
+
+.article-copy-textarea {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  font-family: Lato, sans-serif;
+  font-size: 1em;
+}
+
+/* ::-webkit-scrollbar {
+  width: 5px;
+  cursor: default;
+}
+*/
+/* Track */
+/* ::-webkit-scrollbar-track {
+  border-radius: 10px;
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+  background: gray;
+} */
+
+/* Loader css */
+#overlay {
+  background: #000000;
+  /* color: #666666; */
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 5000;
+  top: 0;
+  left: 0;
+  float: left;
+  text-align: center;
+  padding-top: 25%;
+  opacity: 0.4;
+}
+
+.spinner {
+  margin: 0 auto;
+  height: 64px;
+  width: 64px;
+  animation: rotate 0.8s infinite linear;
+  border: 5px solid;
+  border-right-color: transparent;
+  border-radius: 50%;
+}
+
+.hotkey-command {
+  /* color: #8f8f8f !important; */
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*================ new css code for new project ====================== */
+
+.container {
+  max-width: 1300px;
+  margin: auto;
+  padding: 0px 12px;
+  width: 100%;
+}
+
+.extHeader {
+  /* background: #f1f7f3; */
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.maximizeouticon {
+  width: 35px;
+  background: #828282;
+  height: 3px;
+  margin: auto;
+  border-radius: 5px;
+  margin-bottom: 11px;
+  display: block;
+}
+
+.kebabBtn {
+  padding: 6px 0px;
+  text-align: right;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  :root {
+    --new: #499557;
+    --new-hover: #41894e;
+    --new-secondary: #71b657;
+    --new-filter: saturate(150%) hue-rotate(25deg) brightness(92%);
+    --new-filter-hover: brightness(90%);
+    --new-banner: #6aab76;
+    --new-banner-hover: #65986f;
+
+    --traditional-filter: none;
+    --traditional-filter-hover: none;
+    --traditional-secondary: #8aad67;
+    --traditional: #849e63;
+    --traditional-hover: #687b50;
+    --traditional-banner: #99b576;
+    --traditional-banner-hover: #799655;
+
+    --primary: var(--new);
+    --secondary: #71b657;
+    --primary-hover: #41894e;
+    --image-filter: var(--new-filter);
+    --image-filter-hover: var(--new-filter-hover);
+    --banner: var(--new-banner);
+    --banner-hover: var(--new-banner-hover);
+
+    --default-font: Lato, sans-serif;
+  }
+
+  body {
+    text-rendering: optimizelegibility;
+    margin: 0 !important;
+  }
+
+  .manual-payment-container {
+    margin: auto;
+    margin-top: auto;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    display: block;
+    padding: 10px;
+    border: 0px solid #499557;
+    border-radius: 6px;
+    margin-top: 20px;
+    min-height: 162px;
+  }
+
+  .processing-payment {
+    position: absolute;
+    background-color: #ccc;
+    opacity: 0.4;
+    height: 100%;
+    margin: auto;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .__react_component_tooltip.show {
+    opacity: 1;
+    transition: all 0s;
+  }
+
+  .green-text {
+    transition: all 0.15s;
+    color: #499557;
+    cursor: pointer;
+  }
+
+  .green-text:hover {
+    color: #41894e;
+  }
+}
+
+/* Forcing font everywhere to be open sans. This not working*/
+body {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 14px;
+  overscroll-behavior-y: contain;
+  background: #fff;
+}
+
+/*
+using in commented code
+.nd-input-toast-container {
+  bottom: 25px;
+  width: calc(100% - 20px);
+  background: #2c2d33;
+  text-align: center;
+  font-family: monospace;
+  padding: 5px;
+  border-radius: 0px 0px 5px 5px;
+  margin: 2px 5px 5px 5px;
+  color: white;
+}*/
+
+.nd-word {
+  transition: all 0.05s;
+  position: relative;
+}
+
+/* #inputText[placeholder]:empty::before { // check
+  content: attr(placeholder);
+  color: #8497aa;
+} */
+
+#inputText[placeholder]:empty:focus::before {
+  content: '';
+}
+
+/* #inputBoxSummarizer[placeholder]:empty::before {
+  content: attr(placeholder);
+  color: #dcdcdc;
+} */
+
+#inputBoxSummarizer[placeholder]:empty:focus::before {
+  content: '';
+}
+
+/* ============= new design 2 css ================= */
+
+/* start of CSS for splitter */
+.Resizer {
+  background: #000;
+  opacity: 0.2;
+  z-index: 1;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+}
+
+.Pane {
+  display: flex;
+}
+
+/* .Resizer:hover {
+  -webkit-transition: all 2s ease;
+  transition: all 2s ease;
+} */
+
+.extensionMidContainerWithScroll .Pane2 {
+  height: 40%;
+}
+
+.Resizer.horizontal {
+  height: 3px;
+  margin: -2.5px 0 -3.5px 0;
+  cursor: row-resize;
+  width: 100%;
+  background-color: #000;
+  opacity: 0.2;
+  min-height: 3px;
+}
+
+.Resizer.horizontal:hover {
+  background-color: #5f6368;
+}
+
+.Resizer.vertical {
+  width: 7px;
+  margin-right: -4px;
+  border-right: 4px solid rgba(255, 255, 255, 0);
+  cursor: col-resize;
+  border-bottom: 0px;
+}
+
+.Resizer.vertical:hover {
+  border-right: 4px solid rgba(0, 0, 0, 1);
+  width: 7px;
+}
+.Resizer.disabled {
+  cursor: not-allowed;
+}
+.Resizer.disabled:hover {
+  border-color: transparent;
+}
+
+/* =========== new design 3 =============== */
+
+.root-container {
+  flex-direction: column;
+  flex-wrap: unset !important;
+  display: flex;
+  min-height: calc(100vh - 280px);
+  /* background-color: #fff; */
+  padding-top: 25px !important;
+  padding-bottom: 30px !important;
+}
+
+.auth-root {
+  /* background-color: rgba(249, 250, 255); */
+  min-height: calc(100vh - 280px);
+}
+
+.mid-container {
+  max-width: 1300px !important;
+  width: 100%;
+}
+
+.page-header {
+  /* color: #4f4f4f; */
+  text-align: center;
+}
+
+.page-header:first-child,
+.page-header > p:first-child {
+  font-size: 28px !important;
+  text-align: center;
+}
+
+.home-container-gray {
+  /* background-color: #f1f1f1; */
+  min-height: unset;
+  padding-bottom: 40px !important;
+}
+
+.nd-mobile-container {
+  padding: 0px !important;
+  padding-top: 0px !important;
+  /* background: #fff; */
+}
+
+.nd-mobile-container-focused-content {
+  padding-top: 0px !important;
+}
+
+.home-container-premium {
+  min-height: calc(100vh - 60px);
+}
+
+.qbp-d-flex {
+  display: flex !important;
+}
+
+.qbp-pb50 {
+  padding-bottom: 50px !important;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+.pl-0 {
+  padding-left: 0 !important;
+}
+
+.px-0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.b-shadow {
+  box-shadow: none !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+/* == start from here === */
+.qbp-pb10 {
+  padding-bottom: 10px !important;
+}
+
+.qbp-pt20 {
+  padding-top: 20px !important;
+}
+
+.qbp-pb20 {
+  padding-bottom: 20px !important;
+}
+
+.qbp-textCenter {
+  text-align: center !important;
+}
+
+.qbp-mx16 {
+  margin: 0 16px !important;
+}
+
+.qbp-pb20 {
+  padding-bottom: 20px !important;
+}
+
+.qbp-py20 {
+  padding: 20px 0 !important;
+}
+
+.qbp-textYellow {
+  color: #ffb800;
+}
+
+.qbp-semibold {
+  font-weight: 600 !important;
+}
+
+.qbp-settings-item {
+  display: flex;
+  padding: 25px 0 15px !important;
+  justify-content: space-between;
+  border-bottom: 1px solid #8f8f8f;
+  color: #000;
+  align-items: center;
+}
+
+.card-pad {
+  padding: 10px 0 1px 0 !important;
+}
+
+.qbp-settings-item:last-child {
+  border-bottom: 0;
+}
+
+.details-subtitle {
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: normal;
+  font-size: 14px !important;
+}
+
+.settting-span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.details-subtitle-highlight {
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.6);
+  /* font-weight: bold !important; */
+  font-size: 14px !important;
+}
+
+.premium-container {
+  padding-top: 0 !important;
+}
+
+/*************************** Login/Sign up popup css ******************************/
+
+.auth-container {
+  max-width: 480px;
+  width: 100%;
+
+  /* background-color: white; */
+  position: relative;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 100px;
+}
+
+@media (max-width: 480px) {
+  .auth-root {
+    padding: 0px 15px;
+  }
+}
+
+.auth-container-top-border {
+  height: 5px;
+  width: 100%;
+  background: rgb(33, 150, 83);
+  background: linear-gradient(90deg, rgba(33, 150, 83, 1) 11.34%, rgba(41, 113, 254, 1) 100%);
+}
+
+.social-auth-btn {
+  margin: auto !important;
+  position: relative;
+}
+
+.social-auth-btn img {
+  position: absolute;
+  left: 15px;
+  height: 16px;
+}
+
+.auth-btn {
+  line-height: 32px !important;
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  height: 45px;
+}
+
+.qbp-useraccount-text {
+  color: #8a8a8a;
+  padding-bottom: 5px;
+  font-size: 12px;
+}
+
+.qbp-reg-input {
+  border: 1px solid #a6a5a5;
+  color: #5b5b5b;
+  width: 100%;
+  display: block;
+  float: unset;
+  padding: 10px;
+  border-radius: 3px;
+  margin-bottom: 14px;
+  transition: ease all 0.3s;
+  height: 45px;
+}
+
+.qbp-reg-input:focus {
+  box-shadow: 0px 0 16px 0 rgba(0, 0, 0, 0.4);
+  outline: none !important;
+}
+
+.qbp-error-message {
+  font-size: 11px;
+  position: absolute;
+  bottom: 9px;
+  left: 0;
+  color: #ee1212;
+}
+
+.qbp-error-message1 {
+  font-size: 11px;
+  padding-bottom: 10px;
+  color: #ee1212;
+}
+
+.qbp-success-message {
+  color: #27b027;
+  font-size: 13px;
+  line-height: 18px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.qbp-prem-input {
+  font-weight: normal;
+  font-size: 14px;
+  color: #151515 !important;
+  background-color: #fff;
+  width: 100%;
+  font-family: arial;
+  border: 1px solid #c4c4c4;
+  border-radius: 3px;
+  height: 40px;
+  padding: 0px 15px;
+  outline: 0;
+}
+
+.login-drawer {
+  display: flex;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.style01 {
+  font-size: 1.5em;
+  font-weight: 600;
+  /* color: #fff; */
+}
+
+.linkstyle01 {
+  color: #fff;
+  padding: 0 5px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.flipperTextContainer {
+  padding: 0px 32px 0px 15px;
+  /* border-left: 1px solid #e0e0e0;*/
+  /* color: rgb(0, 0, 0, 0.75); */
+}
+
+.flipperTextContainer:hover {
+  /* color: black; */
+}
+
+.top-tabs .MuiButtonBase-root {
+  /* display: inline-block !important; */
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.payment-status {
+  font-weight: 600;
+  color: #a1a197;
+}
+
+/**************************Survey popup css stuff **********************/
+.survey-modal {
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  display: flex;
+  min-width: 100vw;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+  z-index: 1201;
+}
+
+.survey-container {
+  background-color: white;
+  max-width: 650px;
+  padding: 10px 15px 15px !important;
+  margin: auto !important;
+  position: relative !important;
+}
+
+@media (max-width: 350px) {
+  .survey-container {
+    margin: auto 12 !important;
+  }
+}
+
+@media (max-width: 960px) {
+  .survey-container {
+    max-width: 350px;
+  }
+}
+
+.survey-header {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #000 !important;
+}
+
+.survey-close-btn {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+}
+
+.survey-question {
+  font-size: 13px !important;
+  padding-bottom: 10px;
+}
+
+.so-checkbox-label {
+  font-size: 12px !important;
+  display: flex;
+  padding-bottom: 8px;
+  color: #5f6368;
+}
+
+.survey-submit-btn {
+  color: #2971fe !important;
+  font-size: 14px !important;
+  float: right;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.unsubscribe-reason {
+  width: 100%;
+}
+
+.steps {
+  font-weight: bold !important;
+}
+
+.feedback-textarea {
+  width: 100%;
+  height: 91px;
+  padding: 5px;
+  font-size: 0.87rem;
+  font-family: 'Open Sans', sans-serif;
+}
+/* .prompt-container {
+  background-color: #fff;
+  position: absolute;
+  top: 23px;
+  z-index: 1150;
+  border: 1px solid #bbb;
+  border-radius: 2px;
+  padding-bottom: 0;
+  transition: all 0.15s;
+
+  box-shadow: 0px 1px 1px #999;
+} */
+
+/* ============= do not remove this css =============*/
+.grecaptcha-badge {
+  visibility: hidden;
+}
+/* =========== do not remove css inside comment area ========== */
+
+/*================== responsive codes ============== */
+
+@media (max-width: 960px) {
+  .terms-main-container ol {
+    margin: 10px 0px;
+    padding-left: 20px;
+    word-break: break-word;
+  }
+
+  .terms-main-container ol li {
+    margin: 10px 0px;
+    padding-left: 20px;
+    word-break: break-word;
+  }
+}
+
+.CardElementHolder {
+  border: 1px #c4c4c4 solid;
+  border-radius: 3px;
+  margin-top: 8px;
+  padding: 11px 15px 10px;
+}
+
+.CardField-child {
+  background: #f00 !important;
+}
+
+/* ======= new global css start ============= */
+p {
+  font-size: 16px;
+}
+a {
+  color: #2971fe;
+}
+
+.btn-link {
+  /* color: #2971fe !important; */
+  cursor: pointer;
+}
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.pageTitle {
+  font-size: 30px;
+  margin: 30px 15px 15px;
+  line-height: 41px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.terms-main-container ol li::marker {
+  font-size: 16px;
+  font-weight: bold;
+}
+.terms-main-container ol li p b {
+  font-weight: 600;
+}
+
+/* .CbHosted--focus {
+  border: 1px solid #499557 !important;
+} */
+
+.chargebee-overwrites::placeholder {
+  color: #a0a0a0 !important;
+}
+
+.shadow-container {
+  height: 6px;
+  width: 100%;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.fix-error {
+  background: rgba(73, 149, 87, 0.2) !important;
+}
+
+#RESEARCH_EDITOR:before {
+  color: #828282;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin: 0 auto;
+}
+
+#RESEARCH_EDITOR * {
+  max-width: 672px;
+  white-space: pre-wrap !important;
+}
+/* .grammarbot-popover-root {
+  pointer-events: none !important;
+} */
+
+.page-wrapper {
+  padding: var(--main-editor__mce-content-body--padding-y) var(--main-editor__mce-content-body--padding-x);
+}
+
+#grammarbot:before {
+  color: #828282;
+  /* margin-left: 137px;
+  margin-right: 138px; */
+}
+
+#wordCounterBot:before {
+  color: #828282;
+}
+
+#grammarbot a {
+  color: inherit; /*To add dark mode compatibility */
+}
+
+.grammarbot-correction-card-ignore-button {
+  padding-top: 13px;
+}
+.grammarbot-status-icons {
+  font-size: 40px !important;
+}
+
+.correction-card-wrapper {
+  margin-top: -10px;
+  padding-top: 8px;
+}
+
+.grammarbot-fix-all {
+  position: absolute !important;
+  top: -48px !important;
+  right: 30% !important;
+  z-index: 1 !important;
+}
+
+.notepadeditor:before {
+  color: #828282;
+  margin-left: 0px;
+}
+
+.notepadeditor {
+  width: 100%;
+  font-size: 13px !important;
+  margin-top: 12px !important;
+}
+
+.notepadeditor > p {
+  margin-block-start: 0em !important;
+  font-size: 13px !important;
+}
+
+#main-editor-parent {
+  /* ! THESE VARIABLES ARE BEING USED IN SCRIPTS */
+  --main-editor__mce-content-body--padding-x: 90px;
+  --main-editor__mce-content-body--padding-y: 90px;
+}
+
+#main-editor > .mce-content-body {
+  /* padding: var(--main-editor__mce-content-body--padding-y, 36px)
+    var(--main-editor__mce-content-body--padding-x, 36px); */
+  min-height: calc(100vh - 190px);
+
+  /* color: #252525; */
+}
+
+#rough-editor {
+  width: 100%;
+  overflow: auto;
+}
+
+#rough-editor > .mce-content-body {
+  height: calc(100vh - 122px);
+  width: 100%;
+  margin: 14px;
+  color: #252525;
+  overflow: auto;
+}
+
+#main-editor > .mce-content-body {
+  word-break: break-word !important;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+}
+
+#main-editor > .mce-content-body > p,
+#main-editor > .mce-content-body > .page-wrapper > p {
+  font-size: 14px !important;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+}
+
+sup,
+sub {
+  white-space: pre-wrap !important;
+}
+
+.tox-tinymce {
+  border: none !important;
+  position: absolute !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+#main-editor .tox-editor-header {
+  border: none !important;
+  border-bottom: 1px solid !important;
+}
+
+#toolbar-location .tox-editor-header {
+  border: none !important;
+  top: 20px !important;
+  left: 14px !important;
+}
+
+#toolbar-location .tox-toolbar {
+  background: none !important;
+}
+
+.tox .tox-toolbar-overlord {
+  background: none !important;
+}
+
+.tox-notification {
+  display: none !important;
+}
+
+.tox .tox-tbtn svg {
+  fill: #666666 !important;
+}
+
+.tox .tox-tbtn--disabled svg,
+.tox .tox-tbtn--disabled:hover svg,
+.tox .tox-tbtn:disabled svg,
+.tox .tox-tbtn:disabled:hover svg {
+  fill: rgba(34, 47, 62, 0.5) !important;
+}
+
+.tox .tox-tbtn__select-label {
+  color: #666666 !important;
+}
+
+.tox .tox-autocompleter {
+  max-width: 35em !important;
+}
+
+.tox .tox-autocompleter .tox-menu {
+  max-width: 35em !important;
+}
+
+.tox.tox-tinymce--toolbar-sticky-on .tox-editor-header {
+  box-shadow: none !important;
+}
+
+.tox-editor-header {
+  border-right: none !important;
+}
+
+.tox-toolbar__primary {
+  background: none !important;
+  /* box-shadow: 0px 1px 8px 0px rgba(31, 31, 31, 0.15) !important; */
+  /* border-bottom: 1px solid #ccc !important; */
+  /* border-top: 1px solid #ccc !important; */
+  /* padding-left: 15px !important; */
+  width: 100% !important;
+}
+
+.tox-toolbar__group {
+  border: none !important;
+  /* box-shadow: 2px -1px 3px -2px rgba(31, 31, 31, 0.15) !important; */
+}
+
+.tox-toolbar__group::after {
+  content: url('/images/coWriter/line.svg');
+}
+
+.tox-toolbar__group:last-child:after {
+  content: '';
+}
+
+.tox .tox-menu.tox-collection.tox-collection--list {
+  width: max-content;
+}
+
+.tox-toolbar__primary > .tox-toolbar__group:last-child {
+  box-shadow: none !important;
+}
+
+.quillSettingSpace {
+  -webkit-transition: all 0.1s ease-in-out !important;
+  -moz-transition: all 0.1s ease-in-out !important;
+  -o-transition: all 0.1s ease-in-out !important;
+  transition: all 0.1s ease-in-out !important;
+  margin-top: 26px !important;
+}
+
+.tox-tbtn,
+.tox-tbtn__select-label {
+  cursor: pointer !important;
+}
+
+.tox-tbtn--disabled {
+  cursor: not-allowed !important;
+}
+
+@media (max-width: 600px) {
+  body {
+    margin: 26px 16px 0px 20px;
+  }
+}
+
+.showFadeEffect {
+  --animation-time: 2s;
+  animation: opacity-fade var(--animation-time) !important;
+}
+
+.dataRefHidden {
+  display: none !important;
+}
+
+.pulseLoader {
+  content: ' ';
+  width: 90px;
+  height: 12px;
+  display: inline-block;
+  background-color: #ccc;
+  animation: new-animation 1s infinite;
+  vertical-align: text-bottom;
+  border-radius: 3px;
+  margin-left: -5px;
+}
+
+@keyframes new-animation {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes opacity-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#doc-title {
+  padding: 46px 0px 13px 137px;
+  width: 70%;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.mce-content-body[data-mce-placeholder]:not(.mce-visualblocks)::before {
+  content: attr(placeholder);
+  pointer-events: none;
+  display: block; /* For Firefox */
+  color: #828282 !important;
+}
+
+[contenteditable='true']:empty:before {
+  content: attr(placeholder);
+  pointer-events: none;
+  display: block; /* For Firefox */
+  color: #828282 !important;
+}
+
+.red-underline {
+  border-bottom: #fb3f4b 2px solid;
+  transition: all 0.3s ease-in-out;
+}
+
+.red-underline:hover {
+  background-color: #fb3f4c14;
+  border-radius: 2px;
+}
+
+.red-underline.error-hovered {
+  background-color: #fb3f4c14;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.blue-underline {
+  border-bottom: #0067c5 2px solid;
+  transition: all 0.3s ease-in-out;
+}
+
+.blue-underline:hover {
+  background-color: #0067c514;
+  border-radius: 2px;
+}
+
+.blue-underline.error-hovered {
+  background-color: #0067c514;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.magenta-underline {
+  border-bottom: #8051ff 2px solid;
+  transition: all 0.3s ease-in-out;
+}
+
+.magenta-underline:hover {
+  background-color: #8051ff24;
+  border-radius: 2px;
+}
+
+.magenta-underline.error-hovered {
+  background-color: #8051ff24;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+#fixed-toolbar-container .tox-tinymce-inline .tox-editor-header {
+  border: none !important;
+}
+/*
+  Citation Marker style
+*/
+#main-editor .CitationMarkerStyle {
+  padding: 3px;
+}
+
+.CitationMarkerStyle_Burst {
+  background-color: #ffefde !important;
+  color: orange !important;
+}
+
+.reduce-margin-block-end {
+  margin-block-end: -1em !important;
+}
+
+#grammar-checker pre {
+  white-space: pre-wrap;
+}
+
+#word-counter pre {
+  white-space: pre-wrap;
+}
+
+.sound-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sound-wave {
+  width: 400px;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.sound-wave .audioOnWithSpeech {
+  display: block;
+  width: 5px;
+  margin-right: 1px;
+  height: 90px;
+  background: #499557;
+  animation: sound 0ms -800ms linear infinite alternate;
+  transition: height 0.8s;
+}
+
+.sound-wave .audioOff {
+  display: block;
+  width: 5px;
+  margin-right: 0px;
+  height: 12px;
+  background: #9f9f9f;
+}
+
+.sound-wave .audioOnWithoutSpeech {
+  display: block;
+  width: 5px;
+  margin-right: 0px;
+  height: 12px;
+  background: #499557;
+}
+
+@keyframes sound {
+  0% {
+    opacity: 0.35;
+    height: 6px;
+  }
+  100% {
+    opacity: 1;
+    height: 46px;
+  }
+}
+
+@keyframes sound2 {
+  0% {
+    opacity: 0.35;
+    height: 6px;
+  }
+  100% {
+    opacity: 1;
+    height: 120px;
+  }
+}
+
+.audioOnWithSpeech:nth-child(1) {
+  height: 2px;
+  animation-duration: 274ms;
+}
+
+.audioOnWithSpeech:nth-child(2) {
+  height: 10px;
+  animation-duration: 233ms;
+}
+
+.audioOnWithSpeech:nth-child(3) {
+  height: 18px;
+  animation-duration: 207ms;
+}
+
+.audioOnWithSpeech:nth-child(4) {
+  height: 26px;
+  animation-duration: 258ms;
+}
+
+.audioOnWithSpeech:nth-child(5) {
+  height: 30px;
+  animation-duration: 200ms;
+}
+
+.audioOnWithSpeech:nth-child(6) {
+  height: 32px;
+  animation-duration: 227ms;
+}
+
+.audioOnWithSpeech:nth-child(7) {
+  height: 34px;
+  animation-duration: 241ms;
+}
+
+.audioOnWithSpeech:nth-child(8) {
+  height: 36px;
+  animation-duration: 219ms;
+}
+
+.audioOnWithSpeech:nth-child(9) {
+  height: 40px;
+  animation-duration: 287ms;
+}
+
+.audioOnWithSpeech:nth-child(10) {
+  height: 46px;
+  animation-duration: 242ms;
+}
+
+.audioOnWithSpeech:nth-child(11) {
+  height: 2px;
+  animation-duration: 274ms;
+}
+
+.audioOnWithSpeech:nth-child(12) {
+  height: 10px;
+  animation-duration: 233ms;
+}
+
+.audioOnWithSpeech:nth-child(13) {
+  height: 18px;
+  animation-duration: 207ms;
+}
+
+.audioOnWithSpeech:nth-child(14) {
+  height: 26px;
+  animation-duration: 258ms;
+}
+
+.audioOnWithSpeech:nth-child(15) {
+  height: 30px;
+  animation-duration: 200ms;
+}
+
+.audioOnWithSpeech:nth-child(16) {
+  height: 32px;
+  animation-duration: 227ms;
+}
+
+.audioOnWithSpeech:nth-child(17) {
+  height: 34px;
+  animation-duration: 241ms;
+}
+
+.audioOnWithSpeech:nth-child(18) {
+  height: 36px;
+  animation-duration: 219ms;
+}
+
+.audioOnWithSpeech:nth-child(19) {
+  height: 40px;
+  animation-duration: 287ms;
+}
+
+.audioOnWithSpeech:nth-child(20) {
+  height: 46px;
+  animation-duration: 242ms;
+}
+
+.audioOnWithSpeech:nth-child(21) {
+  height: 2px;
+  animation-duration: 274ms;
+}
+
+.audioOnWithSpeech:nth-child(22) {
+  height: 10px;
+  animation-duration: 233ms;
+}
+
+.audioOnWithSpeech:nth-child(23) {
+  height: 18px;
+  animation-duration: 207ms;
+}
+
+.audioOnWithSpeech:nth-child(24) {
+  height: 26px;
+  animation-duration: 258ms;
+}
+
+.audioOnWithSpeech:nth-child(25) {
+  height: 30px;
+  animation-duration: 200ms;
+}
+
+.audioOnWithSpeech:nth-child(26) {
+  height: 32px;
+  animation-duration: 227ms;
+}
+
+.audioOnWithSpeech:nth-child(27) {
+  height: 34px;
+  animation-duration: 241ms;
+}
+
+.mce-content-body [contentEditable='false'][data-mce-selected] {
+  cursor: not-allowed;
+  outline: 3px solid #f1f1f1 !important;
+}
+
+.display--none {
+  display: none;
+}
+
+/* [title='Font sizes'] {
+  width: 65px !important;
+} */
+
+.wave .dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  /* margin-right: 1px; */
+  background: #499557;
+  animation: wave 1s linear infinite;
+}
+.wave .dot:nth-child(1) {
+  animation-delay: -0.9s;
+}
+.wave .dot:nth-child(2) {
+  animation-delay: -0.7s;
+}
+.wave .dot:nth-child(3) {
+  animation-delay: -0.5s;
+}
+
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: initial;
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+}
+
+    button {
+      font-size: 12px;
+    }
+    p { 
+      color: black; 
+      font-size: 12px; 
+    }
+    input {
+      color: black; 
+      font-size: 12px; 
+      background: white;
+    }
+    textarea {
+      color: black; 
+      font-size: 12px; 
+    }
+    checkbox {
+      background: white;
+    }
+    </style><style><style data-emotion="extn-css" data-s=""></style></style></template></quillbot-extension-root><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
