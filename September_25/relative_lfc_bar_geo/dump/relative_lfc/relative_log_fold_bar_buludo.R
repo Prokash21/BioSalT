@@ -7,12 +7,13 @@ library(dplyr)
 library(tidyr)  
 library(gridExtra)
 
-result <- read.csv("eADMSC_resLFC_data_for_heatmap_bar.csv")
+result <- read.csv("Buludo_resLFC_data_for_heatmap_bar.csv")
 ################################################################################
 
 
 genes <- result$Gene
-conditions <- c("eMCF7", "eHeLa", "eMDAMB231", "eA549", "eH1975")
+conditions <- c("Bulodo")
+                #, "eHeLa", "eMDAMB231", "eA549", "eH1975")
 
 data_long <- result %>%
   select(Gene, ends_with("log2FoldChange"), ends_with("lfcSE"), ends_with("padj")) %>%
