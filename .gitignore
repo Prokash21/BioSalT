@@ -1,2 +1,65 @@
 .RData
 .Rhistory
+
+# Ignore common data and presentation files
+*.csv
+*.pptx
+*.xlsx
+*.docx
+*.pdf
+
+# Ignore temporary files
+*.tmp
+*.log
+*.bak
+*.swp
+*.~*
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore R package development files
+.Rproj.user/
+.Rbuildignore
+.Rcheck/
+.NAMESPACE
+
+# Ignore compiled code
+*.o
+*.so
+*.dll   
+*.exe
+
+# Ignore output from R Markdown
+*.html
+
+# Ignore cache files
+_cache/ 
+.Rcache/
+.Rhistory
+.RData
+.Rproj.user/
+.Rbuildignore
+.Rcheck/
+
+*.txt
+*.out
+*.gz
+*.zip
+*.tar.gz
+*.rds
+*.Rmd~
+*.Rhistory~
+*.Rproj~
+*.RData~
+
+*.download
+*.partial
+*.crdownload
+
+*.css
+*.js
+*.map
+
+
